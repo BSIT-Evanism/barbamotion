@@ -1,0 +1,76 @@
+---
+import Navbar from "../components/Navbar.astro";
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body data-barba="wrapper">
+    <Navbar />
+    <div
+      class="fixed top-0 bg-black z-2 pointer-events-none w-full h-full"
+      id="transitiondiv"
+    >
+    </div>
+    <slot />
+  </body>
+</html>
+
+<style>
+  #transitiondiv {
+    top: 100vh;
+    left: 0;
+  }
+</style>
+
+<script>
+  import barba from "@barba/core";
+  import { animate, timeline } from "motion";
+
+  const trans = document.getElementById("transitiondiv");
+  const sequence = [
+    [trans, { top: ["100vh", 0] }, { duration: 0.5 }],
+    [trans, { top: [0, "-100vh"] }, { duration: 0.5, delay: 0.2 }],
+  ];
+
+  function delay(n: number): Promise<void> {
+    n = n || 0;
+    return new Promise((resolve): void => {
+      setTimeout(() => {
+        resolve();
+      }, n);
+    });
+  }
+
+  function animator() {
+    timeline(sequence, { duration: 1.5 });
+  }
+
+  barba.init({
+    sync: true,
+    transitions: [
+      {
+        async leave(data) {
+          const done: any = this.async();
+
+          //   timeline(sequence, { duration: 2.5 });
+          animator();
+          await delay(1000);
+          done();
+        },
+      },
+    ],
+  });
+</script>

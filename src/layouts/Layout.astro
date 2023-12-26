@@ -40,7 +40,7 @@ const { title } = Astro.props;
   import { animate, timeline } from "motion";
 
   const trans = document.getElementById("transitiondiv");
-  const sequence = [
+  const sequence: any = [
     [trans, { top: ["100vh", 0] }, { duration: 0.5 }],
     [trans, { top: [0, "-100vh"] }, { duration: 0.5, delay: 0.2 }],
   ];
@@ -62,7 +62,7 @@ const { title } = Astro.props;
     transitions: [
       {
         async leave(data) {
-          const done: any = this.async();
+          const done: any = this?.async?.();
 
           //   timeline(sequence, { duration: 2.5 });
           animator();

@@ -4,7 +4,22 @@ import Card from "../components/Card.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <main data-barba="container" data-barba-container="home" class="p-4">
-    <h1 class="text-8xl font-bold">Home</h1>
+  <main
+    id="indexpage"
+    data-barba="container"
+    data-barba-container="home"
+    class="p-4 overflow-hidden"
+  >
+    <h1 class="text-8xl font-bold" id="titlehome">Home</h1>
   </main>
 </Layout>
+
+<script>
+  import { animate, inView } from "motion";
+  import barba from "@barba/core";
+
+  inView("#indexpage", (e) => {
+    console.log(e);
+    animate("#titlehome", { y: ["-100vh", 0] }, { duration: 3, delay: 1 });
+  });
+</script>

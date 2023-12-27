@@ -3,7 +3,22 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="contact">
-  <main class="p-4" data-barba="container" data-barba-namespace="contact">
-    <h1 class="text-8xl font-bold">Contact</h1>
+  <main
+    id="contactpage"
+    class="p-4 overflow-hidden"
+    data-barba="container"
+    data-barba-namespace="contact"
+  >
+    <h1 class="text-8xl font-bold" id="titlehome">Contact</h1>
   </main>
 </Layout>
+
+<script>
+  import { animate, inView } from "motion";
+  import barba from "@barba/core";
+
+  inView("#contactpage", (e) => {
+    console.log(e);
+    animate("#titlehome", { y: ["-100vh", 0] }, { duration: 3, delay: 1 });
+  });
+</script>

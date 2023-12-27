@@ -1,0 +1,36 @@
+<main>
+  <div
+    class="h-screen absolute bg-black w-screen flex justify-center items-center font-italic"
+    id="preloader"
+  >
+    <h1 id="title" class="text-4xl text-white">Welcome</h1>
+  </div>
+</main>
+
+<style>
+  #preloader {
+    transform-origin: center;
+    background-color: #000;
+    z-index: 9999;
+    transform: scale(0);
+  }
+</style>
+
+<script>
+  import { animate, timeline } from "motion";
+
+  const sequence = [
+    ["#title", { opacity: [0, 1] }, { duration: 2 }],
+    ["#preloader", { scale: 1 }, { duration: 2.5 }],
+    ["#preloader", { scale: [1, 0.4] }, { duration: 1.5 }],
+    ["#title", { scale: [1, 1.5] }, { duration: 1.5 }, { at: "<" }],
+    ["#title", { opacity: [1, 0] }, { duration: 1 }],
+    [
+      "#preloader",
+      { scaleY: [1, 0], transformOrigin: "top" },
+      { duration: 1.5 },
+    ],
+  ];
+
+  timeline(sequence, { duration: 5.5 });
+</script>

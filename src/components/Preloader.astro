@@ -17,12 +17,16 @@
 </style>
 
 <script>
-  import { animate, timeline } from "motion";
+  import { animate, timeline, glide } from "motion";
 
   const sequence: any = [
     ["#title", { opacity: [0, 1] }, { duration: 2 }],
     ["#preloader", { scale: 1 }, { duration: 2.5 }],
-    ["#preloader", { scale: [1, 0.4] }, { duration: 1.5 }],
+    [
+      "#preloader",
+      { scale: [1, 0.4] },
+      { duration: 1.5, easing: [0.81, 0.15, 0.06, 0.95] },
+    ],
     ["#title", { scale: [1, 1.5] }, { duration: 1.5 }, { at: "<" }],
     ["#title", { opacity: [1, 0] }, { duration: 1 }],
     [
@@ -32,5 +36,7 @@
     ],
   ];
 
-  timeline(sequence, { duration: 5.5 });
+  timeline(sequence, { duration: 5.5 }).finished.then(() => {
+    console.log("animation finished");
+  });
 </script>

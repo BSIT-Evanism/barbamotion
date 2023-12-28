@@ -1,10 +1,13 @@
 import { defineConfig } from 'astro/config';
-
 import sentry from "@sentry/astro";
 import spotlightjs from "@spotlightjs/astro";
-import UnoCSS from 'unocss/astro'
+import UnoCSS from 'unocss/astro';
+
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [UnoCSS({ injectReset: true }), sentry(), spotlightjs()],
+  integrations: [UnoCSS({
+    injectReset: true
+  }), sentry(), spotlightjs(), react()]
 });

@@ -1,8 +1,17 @@
 <div class="flex px-10 py-5 justify-between items-center">
-  <h1 class="text-4xl">Logo</h1>
+  <h1 id="logo" class="text-4xl">Logo</h1>
+
   <div class="flex gap-10 list-none">
     <a href="/about" class="text-xl">About</a>
     <a href="/" class="text-xl">Home</a>
     <a href="/contact" class="text-xl">Contact</a>
   </div>
 </div>
+
+<script>
+  const h1 = document.getElementById("logo");
+
+  setTimeout(() => {
+    h1.classList.add("text-4xl");
+  }, 4000);
+</script>

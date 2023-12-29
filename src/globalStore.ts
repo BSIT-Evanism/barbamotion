@@ -1,8 +1,9 @@
 import { atom } from "nanostores";
 
-export const toggle: boolean = atom(false);
+export type Toggle = boolean;
 
-export const viewToggle: boolean = atom(false);
+export const toggle = atom<Toggle>(false);
+export const viewToggle = atom<Toggle>(false);
 
 export function handleViewToggle(b: boolean): void {
     viewToggle.set(b);

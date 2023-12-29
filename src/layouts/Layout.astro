@@ -107,11 +107,13 @@ const { title } = Astro.props;
 
           //   timeline(sequence, { duration: 2.5 });
           const transcontrol = timeline(sequence, { duration: 2.5 });
-          label.innerHTML = `<span class="">Navigating to ${
-            data.next.url.path?.split("/")[1]
-              ? data.next.url.path?.split("/")[1]
-              : "Home"
-          }</span>`;
+          if (label) {
+            label.innerHTML = `<span class="">Navigating to ${
+              data.next.url.path?.split("/")[1]
+                ? data.next.url.path?.split("/")[1]
+                : "Home"
+            }</span>`;
+          }
           timeline(textsequence, { duration: 2.5 });
           await delay(1000);
           done();

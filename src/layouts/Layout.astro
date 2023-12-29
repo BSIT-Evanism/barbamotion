@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar.astro";
 import Preloader from "../components/Preloader.astro";
 import ToggleBottomBar from "../components/ToggleBottomBar";
 import { ViewTransitions } from "astro:transitions";
+import ViewControl from "../components/ViewControl";
 interface Props {
   title: string;
 }
@@ -24,7 +25,7 @@ const { title } = Astro.props;
 </head>
 <body data-barba="wrapper">
   <div
-    class="fixed flex justify-center items-center top-0 bg-black z-2 pointer-events-none w-full h-full"
+    class="fixed flex justify-center items-center top-0 bg-black z-10 pointer-events-none w-full h-full"
     id="transitiondiv"
   >
   </div>
@@ -38,8 +39,10 @@ const { title } = Astro.props;
     </h1>
   </div>
   <Preloader />
-  <Navbar />
   <LayoutWrapper client:load>
+    <ViewControl client:only>
+      <Navbar />
+    </ViewControl>
     <slot />
   </LayoutWrapper>
   <ToggleBottomBar client:only />
@@ -51,6 +54,11 @@ const { title } = Astro.props;
     top: 0;
     left: 0;
     transform-origin: center;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 </style>
 <script>

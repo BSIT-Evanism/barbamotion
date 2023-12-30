@@ -1,0 +1,92 @@
+<div
+  class="fixed flex justify-center items-center top-0 bg-black z-10 pointer-events-none w-full h-full"
+  id="transitiondiv"
+>
+  <div
+    class="h-screen w-80px border-2 border-white border-y-none bg-black fixed left-0 top-0 z-20"
+  >
+  </div>
+  <div
+    class="h-screen w-80px border-2 border-white border-y-none bg-black fixed right-0 top-0 z-20"
+  >
+  </div>
+</div>
+<div
+  class="w-full h-full absolute top-0 flex justify-center items-center pointer-events-none z-10"
+>
+  <h1
+    class="pointer-events-none text-white text-4xl font-italic underline-dotted underline-white"
+    id="navigateLabel"
+  >
+  </h1>
+</div>
+
+<style></style>
+
+<script>
+  import barba from "@barba/core";
+  import { animate, timeline, spring } from "motion";
+  import type { TimelineDefinition } from "motion";
+
+  const trans = document.getElementById("transitiondiv");
+  const sequence: TimelineDefinition = [
+    [
+      "#transitiondiv",
+      { top: ["100vh", 0] },
+      { duration: 0.5, easing: "ease-in" },
+    ],
+
+    [
+      "#transitiondiv",
+      { scaleX: [1, 0] },
+      { duration: 0.5, delay: 0.5, easing: "ease-in-out" },
+    ],
+  ];
+  const textsequence: TimelineDefinition = [
+    [
+      "#navigateLabel",
+      { y: ["100vh", 0] },
+      { duration: 2, delay: 0.5, easing: [0.71, 0.03, 0.19, 0.91] },
+    ],
+    [
+      "#navigateLabel",
+      { y: [0, "-100vh"] },
+      { duration: 1.5, delay: 0.5, easing: "ease-in-out" },
+    ],
+  ];
+
+  const label = document.querySelector("#navigateLabel");
+
+  function delay(n: number): Promise<void> {
+    n = n || 0;
+    return new Promise((resolve): void => {
+      setTimeout(() => {
+        resolve();
+      }, n);
+    });
+  }
+
+  barba.init({
+    sync: true,
+    transitions: [
+      {
+        async leave(data) {
+          const done = this?.async?.();
+
+          //   timeline(sequence, { duration: 2.5 });
+          const transcontrol = timeline(sequence, { duration: 2.5 });
+          if (label) {
+            label.innerHTML = `<span class="">Navigating to ${
+              data.next.url.path?.split("/")[1]
+                ? data.next.url.path?.split("/")[1]
+                : "Home"
+            }</span>`;
+          }
+          timeline(textsequence, { duration: 2.5 });
+          await delay(1000);
+          done();
+        },
+      },
+    ],
+  });
+</script>

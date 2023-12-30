@@ -67,7 +67,6 @@
   }
 
   barba.init({
-    sync: true,
     transitions: [
       {
         async leave(data) {
@@ -84,7 +83,9 @@
           }
           timeline(textsequence, { duration: 2.5 });
           await delay(1000);
-          done();
+          if (done) {
+            done();
+          }
         },
       },
     ],

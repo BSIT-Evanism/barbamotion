@@ -10,7 +10,7 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   integrations: [UnoCSS({
     injectReset: true
-  }), sentry(), spotlightjs(), react()],
+  }), react()],
   output: "server",
   adapter: vercel()
 });

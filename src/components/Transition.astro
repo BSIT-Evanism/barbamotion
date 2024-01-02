@@ -3,12 +3,16 @@
   id="transitiondiv"
 >
   <div
-    class="h-screen w-80px border-2 border-white border-y-none bg-black fixed left-0 top-0 z-20"
+    class="staggertext h-screen w-80px bg-black text-white font-bold text-2xl fixed left-0 top-0 z-20 flex flex-col items-center justify-between py-10"
   >
+    <h1>E</h1>
+    <h1>V</h1>
   </div>
   <div
-    class="h-screen w-80px border-2 border-white border-y-none bg-black fixed right-0 top-0 z-20"
+    class="staggertext h-screen w-80px bg-black text-white font-bold text-2xl fixed right-0 top-0 z-20 flex flex-col items-center justify-between py-10"
   >
+    <h1>S</h1>
+    <h1>O</h1>
   </div>
 </div>
 <div
@@ -25,7 +29,7 @@
 
 <script>
   import barba from "@barba/core";
-  import { animate, timeline, spring } from "motion";
+  import { animate, timeline, stagger } from "motion";
   import type { TimelineDefinition } from "motion";
 
   const trans = document.getElementById("transitiondiv");
@@ -55,6 +59,14 @@
     ],
   ];
 
+  const staggerSequence: TimelineDefinition = [
+    [
+      ".staggertext h1",
+      { opacity: [0, 1], scale: [1, 1.4] },
+      { duration: 1, delay: stagger(0.4), easing: "ease-in-out" },
+    ],
+  ];
+
   const label = document.querySelector("#navigateLabel");
 
   function delay(n: number): Promise<void> {
@@ -69,20 +81,23 @@
   barba.init({
     transitions: [
       {
+        name: "default",
+
         async leave(data) {
           const done = this?.async?.();
 
           //   timeline(sequence, { duration: 2.5 });
-          const transcontrol = timeline(sequence, { duration: 2.5 });
+          const transcontrol = timeline(sequence, { duration: 3.5 });
           if (label) {
+            timeline(staggerSequence, { duration: 2.5 });
             label.innerHTML = `<span class="">Navigating to ${
               data.next.url.path?.split("/")[1]
                 ? data.next.url.path?.split("/")[1]
                 : "Home"
             }</span>`;
           }
-          timeline(textsequence, { duration: 2.5 });
-          await delay(1000);
+          timeline(textsequence, { duration: 3.5 });
+          await delay(1500);
           if (done) {
             done();
           }

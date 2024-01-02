@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ToggleBottomBar from "../components/ToggleBottomBar";
+import HeroSection from "../components/HeroSection/HeroSection";
 ---
 
 <Layout title="Evan Solanoy">
@@ -8,11 +9,10 @@ import ToggleBottomBar from "../components/ToggleBottomBar";
     id="indexpage"
     data-barba="container"
     data-barba-container="home"
-    class="p-4 overflow-hidden"
+    class="p-4 overflow-hidden bg-white"
   >
-    <h1 class="text-8xl font-bold" id="titlehome">Home</h1>
-    <div class="h-screen w-full"></div>
-    <div class="h-screen w-full"></div>
+    <HeroSection client:only />
+    <div class="h-200vh"></div>
   </main>
 </Layout>
 

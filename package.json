@@ -23,10 +23,12 @@
     "astro": "^4.0.7",
     "framer-motion": "^10.16.16",
     "gsap": "^3.12.4",
+    "locomotive-scroll": "5.0.0-beta.11",
     "motion": "^10.16.4",
     "nanostores": "^0.9.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sass": "^1.69.6",
     "typescript": "^5.3.3"
   },
   "devDependencies": {

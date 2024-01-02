@@ -9,16 +9,18 @@ import HeroSection from "../components/HeroSection/HeroSection";
     id="indexpage"
     data-barba="container"
     data-barba-container="home"
-    class="p-4 overflow-hidden bg-white"
+    class="p-4 bg-white"
   >
-    <HeroSection client:only />
-    <div class="h-200vh"></div>
+    <div class="h-200vh relative">
+      <div class="sticky top-20vh">
+        <HeroSection client:load />
+      </div>
+    </div>
   </main>
 </Layout>
 
 <script>
   import { animate, inView } from "motion";
-  import barba from "@barba/core";
 
   inView("#indexpage", (e) => {
     console.log(e);

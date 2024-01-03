@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./HeroSection.module.scss";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, useScroll, useTransform } from "framer-motion";
 
 function useMousePosition() {
     const [mouseTilt, setMouseTilt] = useState({ xDeg: 0, yDeg: 0 });
@@ -35,6 +35,7 @@ function useMousePosition() {
 
 
 function HeroSection() {
+    const ref = useRef(null);
     const [hover, setHover] = useState(false);
     const [tilt, setTilt] = useState(false);
     const { mouseTilt } = useMousePosition();
@@ -43,6 +44,9 @@ function HeroSection() {
         x: useMotionValue(0),
         y: useMotionValue(0),
     };
+
+    const { scrollYProgress } = useScroll()
+    const scrollTransform = useTransform(scrollYProgress, [0, 0.4], [1, 0.8]);
 
     const xSpring = useSpring(heroTilt.x);
     const ySpring = useSpring(heroTilt.y);
@@ -61,9 +65,11 @@ function HeroSection() {
     return (
         <>
             <motion.div
+                ref={ref}
                 className={styles.wrapper}
                 initial={{ y: -300 }}
                 animate={{ y: 0 }}
+                style={{ scale: scrollTransform }}
                 onMouseEnter={() => setTilt(true)}
                 onMouseLeave={() => setTilt(false)}
                 transition={{ duration: 2.5, type: "spring", delay: 0.8 }}
@@ -80,7 +86,7 @@ function HeroSection() {
                             onMouseEnter={() => setHover(true)}
                             onMouseLeave={() => setHover(false)}
                         >
-                            <div className={`${styles.float}`}>
+                            <div className={`${styles.float} text-primary`}>
                                 <h1 className={styles.heroText}>
                                     Evan <br />
                                     Solanoy

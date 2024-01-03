@@ -25,8 +25,8 @@ function ToggleBottomBar() {
 
     return (
         <>
-            <motion.div id="togglebutton" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className="fixed z-2 bottom-20 border-2 rounded-10 p-[0.2rem] overflow-hidden" animate={{ x: $viewToggle ? "100vw" : 0 }} transition={{ duration: 1, ease: [0.41, 0.15, 0.06, 0.95] }}>
-                <motion.div style={{ scaleX }} className="absolute w-full h-full top-0 left-0 bg-[#22272C] -z-1"></motion.div>
+            <motion.div id="togglebutton" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className="fixed z-2 bottom-20 border-2 rounded-10 p-[0.2rem] overflow-hidden" animate={{ x: $viewToggle ? "100vw" : 0 }} transition={{ duration: 2, ease: [0.41, 0.15, 0.06, 0.95] }}>
+                <motion.div style={{ scaleX }} className="absolute w-full h-full top-0 left-0 bg-accent -z-1"></motion.div>
                 <motion.div className={` ${$toggle ? "border-slate" : "border-black"} flex justify-around items-start h-full w-full gap-4 px-10 py-7 rounded-[2.3rem] z-5 bg-white font-italic text-xl text-center transition-all duration-1000`} >
                     <AnimatePresence>
 
@@ -34,8 +34,8 @@ function ToggleBottomBar() {
                         </motion.div>
                         {hover || $toggle ?
                             (<>
-                                <motion.h1 key="nav1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>About</motion.h1>
-                                <motion.h1 key="nav2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>Contact</motion.h1>
+                                <motion.a href='/about' key="nav1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className={window.location.pathname === '/about' ? 'underline pointer-events-none' : ''}>About</motion.a>
+                                <motion.a href='/contact' key="nav2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className={window.location.pathname === '/contact' ? 'underline pointer-events-none' : ''}>Contact</motion.a>
                             </>)
                             : null
                         }

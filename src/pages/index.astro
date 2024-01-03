@@ -9,13 +9,13 @@ import HeroSection from "../components/HeroSection/HeroSection";
     id="indexpage"
     data-barba="container"
     data-barba-container="home"
-    class="p-4 bg-white"
+    class="p-4 -z-2 bg-bgColor relative"
   >
-    <div class="h-200vh relative">
-      <div class="sticky top-20vh">
-        <HeroSection client:load />
-      </div>
+    <div class="sticky -z-1 -mb-100vh top-20vh">
+      <HeroSection client:load />
+      <div class="h-100vh"></div>
     </div>
+    <div class="z-20 bg-secondary rounded-t-10vh h-200vh w-full"></div>
   </main>
 </Layout>
 

@@ -10,6 +10,6 @@ export function handleViewToggle(b: boolean): void {
     console.log(b)
 }
 
-export function handleToggle(): void {
+export function handleToggle(a: boolean): void {
     toggle.set(!toggle.get());
 }

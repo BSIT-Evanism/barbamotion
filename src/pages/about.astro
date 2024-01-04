@@ -3,24 +3,11 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="about">
-  <main
-    id="aboutpage"
-    class=""
-    data-barba="container"
-    data-barba-namespace="about"
-  >
+  <main data-barba="container" data-barba-namespace="about">
     <div class="h-400vh bg-white relative">
       <h1 class="text-8xl font-bold" id="titlehome">About</h1>
     </div>
   </main>
 </Layout>
 
-<script>
-  import { animate, inView } from "motion";
-  import barba from "@barba/core";
-
-  inView("#aboutpage", (e) => {
-    console.log(e);
-    animate("#titlehome", { y: ["-100vh", 0] }, { duration: 3, delay: 1 });
-  });
-</script>
+<script></script>

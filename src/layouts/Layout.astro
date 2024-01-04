@@ -6,6 +6,7 @@ import ToggleBottomBar from "../components/ToggleBottomBar";
 import { ViewTransitions } from "astro:transitions";
 import ViewControl from "../components/ViewControl";
 import Transition from "../components/Transition.astro";
+import CustomMouse from "../components/HeroSection/CustomMouse";
 interface Props {
   title: string;
 }
@@ -24,6 +25,7 @@ const { title } = Astro.props;
   <!-- <ViewTransitions /> -->
 </head>
 <body id="smooth-wrapper" data-barba="wrapper">
+  <CustomMouse client:load />
   <Transition />
   <Preloader />
   <ViewControl client:only>

@@ -7,6 +7,9 @@ export const viewToggle = atom<Toggle>(false);
 
 export function handleViewToggle(b: boolean): void {
     viewToggle.set(b);
+    if (b) {
+        toggle.set(false);
+    }
     console.log(b)
 }
 

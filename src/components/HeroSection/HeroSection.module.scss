@@ -4,6 +4,10 @@
     background: red;
 }
 
+.maincursor {
+    mix-blend-mode: difference;
+}
+
 .wrapper {
     display: flex;
     width: 80vw;

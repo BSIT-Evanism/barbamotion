@@ -7,7 +7,6 @@ function ViewControl({ children }) {
     const isInView = useInView(ref)
 
     useEffect(() => {
-        console.log(isInView)
         if (isInView) {
             handleViewToggle(true)
         } else {

@@ -9,7 +9,7 @@ import HeroSection from "../components/HeroSection/HeroSection";
     id="indexpage"
     data-barba="container"
     data-barba-container="home"
-    class="p-4 -z-2 bg-bgColor relative"
+    class="p-0.5px -z-2 bg-bgColor relative"
   >
     <div class="sticky -z-1 -mb-100vh top-20vh">
       <HeroSection client:load />
@@ -19,11 +19,4 @@ import HeroSection from "../components/HeroSection/HeroSection";
   </main>
 </Layout>
 
-<script>
-  import { animate, inView } from "motion";
-
-  inView("#indexpage", (e) => {
-    console.log(e);
-    animate("#titlehome", { y: ["-100vh", 0] }, { duration: 3, delay: 1 });
-  });
-</script>
+<script></script>

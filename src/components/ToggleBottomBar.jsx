@@ -44,7 +44,7 @@ function ToggleBottomBar() {
                         </motion.img>
                         {hover || $toggle ?
                             (<>
-                                <motion.a onClick={() => handleChangeRoute('/about')} href='/about' key="nav1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className={window.location.pathname === '/about' ? 'underline pointer-events-none' : ''}>About</motion.a>
+                                <motion.a onClick={() => handleChangeRoute('/about')} href='/about?name=evan' key="nav1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className={window.location.pathname === '/about' ? 'underline pointer-events-none' : ''}>About</motion.a>
                                 <motion.a onClick={() => handleChangeRoute('/contact')} href='/contact' key="nav2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className={window.location.pathname === '/contact' ? 'underline pointer-events-none' : ''}>Contact</motion.a>
                             </>)
                             : null

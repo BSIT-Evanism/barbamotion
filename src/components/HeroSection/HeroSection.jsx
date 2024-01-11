@@ -20,8 +20,8 @@ function useMousePosition() {
         const y = e.clientY;
         const middleX = window.innerWidth / 2;
         const middleY = window.innerHeight / 2;
-        const offsetX = ((x - middleX) / middleX) * 20;
-        const offsetY = ((y - middleY) / middleY) * 20;
+        const offsetX = ((x - middleX) / middleX) * 15;
+        const offsetY = ((y - middleY) / middleY) * 15;
         setMouseTilt({ xDeg: offsetY, yDeg: offsetX });
     };
 
@@ -52,7 +52,7 @@ function HeroSection() {
     const ySpring = useSpring(heroTilt.y);
 
     useEffect(() => {
-        if (tilt) {
+        if (hover) {
             heroTilt.x.set(mouseTilt.xDeg * -1);
             heroTilt.y.set(mouseTilt.yDeg);
         } else {
@@ -70,21 +70,21 @@ function HeroSection() {
                 initial={{ y: -300 }}
                 animate={{ y: 0 }}
                 style={{ scale: scrollTransform }}
-                onMouseEnter={() => setTilt(true)}
-                onMouseLeave={() => setTilt(false)}
+                onMouseEnter={() => setTilt(false)}
+                onMouseLeave={() => setTilt(true)}
                 transition={{ duration: 2.5, type: "spring", delay: 0.8 }}
             >
                 <motion.div
                     className={styles.hero}
                     style={{ rotateX: xSpring, rotateY: ySpring }}
+                    onMouseEnter={() => setHover(false)}
+                    onMouseLeave={() => setHover(true)}
 
                 // animate={{rotateX: mouseTilt.yDeg, rotateY: mouseTilt.xDeg}}
                 >
                     <div className={styles.inner}>
                         <div
                             className={styles.contain}
-                            onMouseEnter={() => setHover(true)}
-                            onMouseLeave={() => setHover(false)}
                         >
                             <div className={`${styles.float} text-primary`}>
                                 <h1 className={styles.heroText}>

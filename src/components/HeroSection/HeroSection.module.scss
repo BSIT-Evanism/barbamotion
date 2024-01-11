@@ -31,11 +31,11 @@
         transform-style: preserve-3d;
         transform: rotateX(var(--rotateX)) rotateY(var(--rotateY));
 
-        &:has(:hover)>.inner>.contain>.float>.heroText {
+        &:not(:hover)>.inner>.contain>.float>.heroText {
             opacity: 1;
         }
 
-        &:has(:hover)>.inner>.contain>.float {
+        &:not(:hover)>.inner>.contain>.float {
             transform: rotateY(180deg);
         }
 

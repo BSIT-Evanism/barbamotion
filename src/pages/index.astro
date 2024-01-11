@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import ToggleBottomBar from "../components/ToggleBottomBar";
 import HeroSection from "../components/HeroSection/HeroSection";
 import FixedImage from "../components/FixedImage.astro";
+import MarqueeComp from "../components/MarqueeComp/MarqueeComp";
 ---
 
 <Layout title="Evan Solanoy">
@@ -16,10 +17,25 @@ import FixedImage from "../components/FixedImage.astro";
       <HeroSection client:only />
       <div class="h-100vh"></div>
     </div>
-    <div class="z-20 bg-secondary rounded-t-10vh h-200vh w-full p-10">
+    <div class="z-20 bg-secondary rounded-t-10vh pt-20 h-400vh w-full pb-20">
+      <MarqueeComp client:only />
       <FixedImage />
+      <div class="h-150vh w-full"></div>
+      <div id="secondSec" class="h-100vh bg-platinum w-full"></div>
     </div>
+    <div class="w-full h-200vh bg-bgColor"></div>
   </main>
 </Layout>
 
-<script></script>
+<script>
+  import { inView } from "motion";
+  import { handleMarquee, marqueeState } from "../globalStore";
+
+  inView("#secondSec", (el) => {
+    handleMarquee("second");
+
+    return () => {
+      handleMarquee("none");
+    };
+  });
+</script>

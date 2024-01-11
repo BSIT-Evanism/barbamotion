@@ -1,18 +1,26 @@
 import React, { useEffect } from 'react'
 import { useStore } from '@nanostores/react'
-import { toggle } from '../globalStore'
+import { routeName, toggle, transitionState } from '../globalStore'
 import { AnimatePresence, motion } from 'framer-motion'
 
 
 
 function LayoutWrapper({ children }) {
     const $toggle = useStore(toggle)
+    const $transitionState = useStore(transitionState)
+    const $routeName = useStore(routeName)
+
+    useEffect(() => {
+        setTimeout(() => {
+            window.scrollTo(0, 0)
+        }, 2000)
+    }, [$routeName])
 
     return (
         <>
             <AnimatePresence>
                 {$toggle && (<div className='z-10 relative'>
-                    <motion.div whileHover={{ height: '30vh', transition: { duration: 1, type: 'spring' } }} initial={{ y: '-30vh' }} animate={{ y: 0 }} exit={{ y: '-30vh' }} transition={{ duration: 2, type: 'tween' }} className='bg-bgColor drop-shadow-2xl drop-shadow-color-primary h-10vh w-full fixed top-0'>
+                    <motion.div whileHover={{ height: '30vh', transition: { duration: 1, type: 'spring' } }} initial={{ y: '-30vh' }} animate={{ y: 0 }} exit={{ y: '-30vh' }} transition={{ duration: 2, type: 'tween' }} className={`bg-bgColor drop-shadow-2xl drop-shadow-color-primary h-10vh w-full fixed top-0 ${$transitionState === 'exit' ? 'overflow-hidden' : 'overflow-clip'}`}>
 
                     </motion.div>
                     <motion.div initial={{ x: '-30vh' }} animate={{ x: 0 }} exit={{ x: '-30vh' }} transition={{ duration: 2, type: 'tween' }} className='bg-bgColor drop-shadow-2xl drop-shadow-color-primary h-full w-10vh fixed top-0 left-0'>

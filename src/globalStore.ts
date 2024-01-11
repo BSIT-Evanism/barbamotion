@@ -8,6 +8,7 @@ export const toggle = atom<Toggle>(false);
 export const viewToggle = atom<Toggle>(false);
 export const routeName = atom<Route>('/');
 export const hoverValue = atom<Hover>('none');
+export const transitionState = atom<'enter' | 'exit' | 'none'>('none');
 
 export function handleViewToggle(b: boolean): void {
     viewToggle.set(b);
@@ -26,4 +27,9 @@ export function handleChangeRoute(a: Route): void {
 
 export function handleToggle(a: boolean): void {
     toggle.set(!toggle.get());
+}
+
+export function handleTransition(): void {
+    transitionState.set('exit')
+    console.log(transitionState.get())
 }

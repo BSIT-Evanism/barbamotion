@@ -17,6 +17,7 @@
 
 <script>
   import { animate, timeline, glide } from "motion";
+  import { handleTransition } from "../globalStore.ts";
 
   const sequence: any = [
     ["#title", { opacity: [0, 1] }, { duration: 2 }],
@@ -37,5 +38,8 @@
 
   timeline(sequence, { duration: 5.5 }).finished.then(() => {
     console.log("animation finished");
+    setTimeout(() => {
+      handleTransition();
+    }, 2000);
   });
 </script>

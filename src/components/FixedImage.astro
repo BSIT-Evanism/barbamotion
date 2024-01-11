@@ -1,15 +1,43 @@
-<div class="fixed__image"></div>
+<div class="rounded-5vh overflow-hidden h-40% w-50vw">
+  <img
+    src="https://images.unsplash.com/photo-1704589148269-dbd0e200e69f?q=80&w=1588&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    alt="parallax"
+    id="img1"
+  />
+</div>
 
-<style is:global>
-  .fixed__image::before {
-    position: fixed;
-    content: "";
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 30vh;
-    width: 60vw;
-    border-radius: 5vh;
-    background-image: url("https://images.unsplash.com/photo-1704589148269-dbd0e200e69f?q=80&w=1588&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  }
-</style>
+<style is:global></style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to("#img1", {
+    scrollTrigger: {
+      trigger: "#img1",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true,
+      markers: true,
+    },
+    y: -300,
+    ease: "none",
+  });
+
+  // document.getElementById("img1")?.addEventListener("mouseenter", () => {
+  //   gsap.to("#img1", {
+  //     scale: 1.1,
+  //     transition: 0.5,
+  //     ease: "circ.in",
+  //   });
+  // });
+  // document.getElementById("img1")?.addEventListener("mouseleave", () => {
+  //   gsap.to("#img1", {
+  //     scale: 1.0,
+  //     transition: 0.5,
+  //     ease: "circ.out",
+  //   });
+  // });
+</script>

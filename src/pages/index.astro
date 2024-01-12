@@ -4,6 +4,8 @@ import ToggleBottomBar from "../components/ToggleBottomBar";
 import HeroSection from "../components/HeroSection/HeroSection";
 import FixedImage from "../components/FixedImage.astro";
 import MarqueeComp from "../components/MarqueeComp/MarqueeComp";
+import SecondSec from "../components/SecondSec.astro";
+import FixedImageReact from "../components/FixedImageReact";
 ---
 
 <Layout title="Evan Solanoy">
@@ -19,23 +21,19 @@ import MarqueeComp from "../components/MarqueeComp/MarqueeComp";
     </div>
     <div class="z-20 bg-secondary rounded-t-10vh pt-20 h-400vh w-full pb-20">
       <MarqueeComp client:only />
-      <FixedImage />
+      <FixedImageReact client:only />
+      <!-- <FixedImage /> -->
       <div class="h-150vh w-full"></div>
-      <div id="secondSec" class="h-100vh bg-platinum w-full"></div>
+      <SecondSec />
     </div>
     <div class="w-full h-200vh bg-bgColor"></div>
   </main>
 </Layout>
 
 <script>
-  import { inView } from "motion";
-  import { handleMarquee, marqueeState } from "../globalStore";
+  import { routeName, handleMarquee } from "../globalStore.ts";
 
-  inView("#secondSec", (el) => {
-    handleMarquee("second");
-
-    return () => {
-      handleMarquee("none");
-    };
+  routeName.subscribe(() => {
+    handleMarquee("none");
   });
 </script>

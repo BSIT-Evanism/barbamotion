@@ -4,7 +4,7 @@ import ToggleBottomBar from "../components/ToggleBottomBar";
 import HeroSection from "../components/HeroSection/HeroSection";
 import FixedImage from "../components/FixedImage.astro";
 import MarqueeComp from "../components/MarqueeComp/MarqueeComp";
-import SecondSec from "../components/SecondSec.astro";
+import SecondSec from "../components/SecondSec";
 import FixedImageReact from "../components/FixedImageReact";
 ---
 
@@ -24,7 +24,7 @@ import FixedImageReact from "../components/FixedImageReact";
       <FixedImageReact client:only />
       <!-- <FixedImage /> -->
       <div class="h-150vh w-full"></div>
-      <SecondSec />
+      <SecondSec client:load />
     </div>
     <div class="w-full h-200vh bg-bgColor"></div>
   </main>

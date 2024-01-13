@@ -115,20 +115,27 @@
                         text-transform: uppercase;
                         opacity: 0;
                         // backface-visibility: hidden;
-                        scale: 5.5;
+                        // scale: 5.5;
+                        font-size: min(200px, 5vw);
                         transition: 500ms ease;
                         font-weight: bold;
                         transform: rotateY(180deg) translateX(20%);
                     }
 
                     &::before {
+                        background-image: url(/public//Portrait.jpg);
+                        object-fit: cover;
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
                         content: "";
-                        border: #102c57 solid 2px;
+                        border: #102c57e1 solid 2px;
+
                         position: absolute;
                         inset: 0.75rem;
                         border-radius: 30px;
                         filter: blur(0.5px);
-                        opacity: 0.5;
+                        // opacity: 0.5;
                     }
                 }
 

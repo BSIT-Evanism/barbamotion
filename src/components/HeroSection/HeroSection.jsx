@@ -87,6 +87,7 @@ function HeroSection() {
                             className={styles.contain}
                         >
                             <div className={`${styles.float} text-primary`}>
+                                {/* <img src="/public/Portrait.jpg" className="object-cover h-full w-full" alt="portrait" /> */}
                                 <h1 className={styles.heroText}>
                                     Evan <br />
                                     Solanoy

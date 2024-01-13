@@ -40,8 +40,8 @@ function ToggleBottomBar() {
                 <motion.div className={` ${$toggle ? "border-slate" : "border-black"} flex justify-around items-start h-full w-full gap-4 px-10 py-7 rounded-[2.3rem] z-5 bg-white font-italic text-xl text-center transition-all duration-1000`} >
                     <AnimatePresence>
 
-                        <motion.img key="button" src='/favicon.svg' onClick={handleToggle} whileHover={{ scale: 1.2 }} animate={{ rotate: hover ? -180 : 0, transition: { duration: 0.3, type: 'tween' } }} layoutId="buttonnavbar" className="w-40px h-40px rounded-full border-primary border-2 cursor-pointer">
-                        </motion.img>
+                        <motion.div key="button" onClick={handleToggle} whileHover={{ scale: 1.2 }} animate={{ rotate: $toggle ? 90 : 0, width: hover ? "40px" : "10px", transition: { duration: 0.3, type: 'tween' } }} layoutId="buttonnavbar" className={`w-20px h-40px rounded-full border-primary border-2 cursor-pointer`} >
+                        </motion.div>
                         {hover || $toggle ?
                             (<>
                                 <motion.a onClick={() => handleChangeRoute('/about')} href='/about?name=evan' key="nav1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className={window.location.pathname === '/about' ? 'underline pointer-events-none' : ''}>About</motion.a>

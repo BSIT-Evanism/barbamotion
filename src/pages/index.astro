@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ToggleBottomBar from "../components/ToggleBottomBar";
 import HeroSection from "../components/HeroSection/HeroSection";
-import FixedImage from "../components/FixedImage.astro";
 import MarqueeComp from "../components/MarqueeComp/MarqueeComp";
 import SecondSec from "../components/SecondSec";
 import FixedImageReact from "../components/FixedImageReact";
@@ -27,17 +25,13 @@ import MidSection from "../components/MidSection";
       <div class="h-150vh w-full"></div>
       <SecondSec client:load />
     </div>
-    <div class="w-full h-300vh -mt-100vh -mb-100vh">
-      <div
-        class="h-100vh flex justify-center items-center w-full top-0 sticky bg-accent -z-1"
-      >
-        <MidSection client:only />
-      </div>
-    </div>
+
+    <MidSection client:only />
+
     <div class="w-full h-100vh rounded-t-10vh -mt-100vh bg-primary z-1">
-      <div class="h-70vh"></div>
+      <div class="h-80vh"></div>
       <div
-        class="bg-platinum h-30vh rounded-t-10vh flex justify-center bottom-0 items-center sticky"
+        class="bg-platinum h-20vh rounded-t-10vh flex justify-center bottom-0 items-center sticky"
       >
         <div class="w-80vw flex gap-10 justify-between items-center px-10">
           <h1 class="text-5xl w-30% text-center">Contact</h1>

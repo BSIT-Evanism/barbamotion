@@ -45,6 +45,7 @@ function HeroSection() {
         y: useMotionValue(0),
     };
 
+
     const { scrollYProgress } = useScroll()
     const scrollTransform = useTransform(scrollYProgress, [0, 0.4], [1, 0.8]);
 
@@ -97,10 +98,13 @@ function HeroSection() {
                         <motion.div
                             className={styles.callFloat}
                             drag="x"
-                            dragConstraints={{ left: 0, right: 300, top: 0, bottom: 0 }}
+                            dragConstraints={{ left: 0, right: 0 }}
                         >
                             <div className={styles.ping}>
                                 <div className={styles.innerPing} />
+                            </div>
+                            <div className="text-xl font-bold uppercase text-center h-100% w-full flex justify-center items-center">
+                                I'm Available
                             </div>
                         </motion.div>
                     </div>

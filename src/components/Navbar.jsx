@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
-import NavBarSelection from './HeroSection/NavBarSelection'
-import { useInView } from 'framer-motion'
+import React, { useEffect, useRef, useState } from 'react';
+import NavBarSelection from './HeroSection/NavBarSelection';
 
 function Navbar() {
   const ref = useRef(null);
@@ -11,6 +10,7 @@ function Navbar() {
       setIsInView(true)
     }, 3000)
   }, [])
+
 
   return (
     <div

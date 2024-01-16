@@ -14,9 +14,7 @@ export default defineConfig({
     },
     presets: [
         presetUno(),
-        presetForms({
-            strategy: 'class',
-        }),
-        
-    ]
+        presetForms(),
+    ],
+    
 })

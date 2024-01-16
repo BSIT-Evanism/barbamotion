@@ -42,6 +42,7 @@ function HeroSection() {
     const { mouseTilt } = useMousePosition();
     const [contact, setContact] = useState(false);
     const [formstart, setFormstart] = useState(false);
+    const [name, setName] = useState('');
 
     const heroTilt = {
         x: useMotionValue(0),
@@ -65,10 +66,11 @@ function HeroSection() {
         }
     }, [mouseTilt.xDeg, mouseTilt.yDeg]);
 
-    function handleFirstPart() {
-        event.preventDefault();
+    function handleFirstPart(e) {
+        e.preventDefault();
         console.log(formRef.current[0].value);
         setFormstart(false);
+        setName('');
     }
 
 
@@ -119,37 +121,21 @@ function HeroSection() {
                             <div className="text-sm uppercase text-center h-100% w-full flex justify-center items-center">
                                 <AnimatePresence mode="wait">
                                     {formstart && (
-                                        <motion.form ref={formRef} className="relative w-80% block border-b border-gray-200 bg-transparent pt-3 focus-within:border-blue-600" onSubmit={() => handleFirstPart()}>
-                                            <motion.label
-                                            initial={{ y: 10, opacity: 0 }}
-                                            animate={{ y: 0, opacity: 1 }}
-                                            transition={{ duration: 1, type: 'tween', ease: 'circOut' }}
-                                            htmlFor="UserEmail"
-                                                                                  >
-                                            <input
-                                              type="text"
-                                              id="UserEmail"
-                                              placeholder="Email"
-                                              className="peer h-full w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-                                            />
-                                            <span
-                                              className="absolute start-0 left-10 top-4 -translate-y-1/2 text-xs text-gray-700 transition-all duration-500ms peer-placeholder-shown:text-lg peer-focus:-translate-x-10 peer-focus:-translate-y-6 peer-focus:text-lg"
-                                            >
-                                              Can I ask for your name?
-                                            </span>
-                                                                                  </motion.label>
+                                        <motion.form ref={formRef} className="relative w-80% block border-b border-gray-200 bg-transparent p-2" onSubmit={(e) => handleFirstPart(e)}>
+                                            <label className={`absolute pointer-events-none ${name ? "text-2 translate-x-15" : "text-3 translate-x-0"} transition-transform duration-300ms ease top-1`} htmlFor="nameInput">Can I ask for your name?</label>
+                                            <input type="text" onChange={(e) => setName(e.target.value)} className='border-b-primary border-b-2 focus:outline-none' />
                                         </motion.form>
                                     )}
                                     {!formstart && (<div>
-                                        <motion.h1 animate={{ y: contact ? -2 : 10, rotateX: contact ? 90 : 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3, type: 'tween', ease: 'circOut' }}>Have an idea already?</motion.h1>
-                                        <motion.h1 animate={{ y: contact ? -10 : 0, rotateX: contact ? 0 : -90 }} exit={{ opacity: 0 }} transition={{ duration: 0.3, type: 'tween', ease: 'circOut' }}>Send me a Message</motion.h1>
+                                        <motion.h1 className='text-[min(11px,10vw)]' animate={{ y: contact ? -2 : 10, rotateX: contact ? 90 : 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3, type: 'tween', ease: 'circOut' }}>Have an idea already?</motion.h1>
+                                        <motion.h1 className='text-[min(11px,10vw)]' animate={{ y: contact ? -10 : 0, rotateX: contact ? 0 : -90 }} exit={{ opacity: 0 }} transition={{ duration: 0.3, type: 'tween', ease: 'circOut' }}>Send me a Message</motion.h1>
                                     </div>)}
                                 </AnimatePresence>
                             </div>
                         </motion.div>
                     </div>
-                </motion.div>
-            </motion.div>
+                </motion.div >
+            </motion.div >
         </>
     );
 }

@@ -16,7 +16,7 @@ function MidSection() {
             <div
                 className="h-100vh flex justify-center items-center w-full top-0 sticky bg-accent -z-1"
             >
-                <div class="w-60vw" id="scrollmid" >
+                <div className="w-60vw" id="scrollmid" >
                     <motion.h1
                         style={{ scale: scrollVal }}
                         className="text-4xl lg:text-6xl z--1 w-full text-justify indent-2xl fw200 leading-relaxed hover:text-[#0F2C59] midsec"

@@ -73,6 +73,11 @@ function HeroSection() {
         setName(formRef.current[0].value);
     }
 
+    function handleSubmitFinal() {
+        setFormstart('initial');
+        setName('');
+    }
+
 
     return (
         <>
@@ -114,6 +119,7 @@ function HeroSection() {
                             onMouseEnter={() => setContact(true)}
                             onMouseLeave={() => setContact(false)}
                             dragConstraints={{ left: 0, right: 0 }}
+                            transition={{ duration: 1.5, type: 'spring' }}
                         >
                             <div className={styles.ping}>
                                 <div className={styles.innerPing} />
@@ -121,59 +127,15 @@ function HeroSection() {
                             <div className="text-sm uppercase text-center h-100% w-full flex justify-center items-center">
                                 <AnimatePresence mode="wait">
                                     {formstart === 'second' && (
-                                        <motion.div className="w-full h-full p-4">
+                                        <motion.div className="w-full h-full p-4 overflow-hidden">
                                             <motion.h1 className="font-bold" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
                                                 Hi, {name}! <br />
                                             </motion.h1>
                                             <motion.h1 className='italic' initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }}>
                                                 Pick your Poison
                                             </motion.h1>
-                                            <label
-                                                for="AcceptConditions"
-                                                class="relative z-10 bg-gray-300 h-8 w-14 cursor-pointer [-webkit-tap-highlight-color:_transparent]"
-                                            >
-                                                <input
-                                                    type="checkbox"
-                                                    id="AcceptConditions"
-                                                    class="peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden"
-                                                />
-
-                                                <span
-                                                    class="absolute inset-y-0 start-0 z-10 m-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-gray-400 transition-all peer-checked:start-6 peer-checked:text-green-600"
-                                                >
-                                                    <svg
-                                                        data-unchecked-icon
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-4 w-4"
-                                                        viewBox="0 0 20 20"
-                                                        fill="currentColor"
-                                                    >
-                                                        <path
-                                                            fill-rule="evenodd"
-                                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                            clip-rule="evenodd"
-                                                        />
-                                                    </svg>
-
-                                                    <svg
-                                                        data-checked-icon
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        class="hidden h-4 w-4"
-                                                        viewBox="0 0 20 20"
-                                                        fill="currentColor"
-                                                    >
-                                                        <path
-                                                            fill-rule="evenodd"
-                                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                            clip-rule="evenodd"
-                                                        />
-                                                    </svg>
-                                                </span>
-
-                                                <span
-                                                    class="absolute inset-0 rounded-full bg-gray-300 transition peer-checked:bg-green-500"
-                                                ></span>
-                                            </label>
+                                            <Switcher11 />
+                                            <motion.div initial={{ y: 100 }} animate={{ y: 0, transition: { duration: 1 } }} onClick={() => handleSubmitFinal()} className="bg-primary text-bgColor w-50% rounded-full p-2 absolute bottom-5 left-1/4 cursor-pointer">Send</motion.div>
                                         </motion.div>
                                     )}
                                     {formstart === 'first' && (
@@ -194,6 +156,36 @@ function HeroSection() {
             </motion.div >
         </>
     );
+}
+
+const Switcher11 = () => {
+    const [isChecked, setIsChecked] = useState(false)
+
+    const handleCheckboxChange = () => {
+        setIsChecked(!isChecked)
+    }
+
+    return (
+        <>
+            <label className='flex cursor-pointer select-none items-center'>
+                <div className='relative'>
+                    <input
+                        type='checkbox'
+                        checked={isChecked}
+                        onChange={handleCheckboxChange}
+                        className='sr-only'
+                    />
+                    <div className='block h-8 w-14 rounded-full bg-[#EAEEFB]'></div>
+                    <div className={`dot absolute ${isChecked && "translate-x-full"} left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition`}>
+                        <span
+                            className={`h-3 w-3 rounded-full transition ${isChecked ? 'bg-white' : 'bg-primary'
+                                }`}
+                        ></span>
+                    </div>
+                </div>
+            </label>
+        </>
+    )
 }
 
 export default HeroSection;

@@ -14,7 +14,6 @@
     "@astrojs/react": "^3.0.9",
     "@astrojs/vercel": "^6.1.1",
     "@barba/core": "^2.9.7",
-    "@julr/unocss-preset-forms": "^0.1.0",
     "@nanostores/react": "^0.7.1",
     "@radix-ui/react-slot": "^1.0.2",
     "@sentry/astro": "^7.91.0",

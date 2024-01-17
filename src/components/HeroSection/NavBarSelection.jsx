@@ -61,7 +61,7 @@ function NavBarSelection({ logoState }) {
                     duration: 5.5
                     , type: 'spring'
                     , delay: i * 0.5
-                }} href={item.link} onClick={() => handleChangeRoute(item.link)} className="text-xl linktag uppercase font-semibold hover:opacity-50">
+                }} href={item.link} onClick={() => handleChangeRoute(item.link)} className="text-xl linktag uppercase font-serif hover:opacity-50">
                     {item.name}
                     <div transition={{ duration: 0.5 }} className={`bg-primary w-10px h-10px rounded-full dot ${$routeName === item.link ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200ms ease`}></div>
                 </motion.a>

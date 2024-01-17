@@ -119,23 +119,23 @@ function HeroSection() {
                             onMouseEnter={() => setContact(true)}
                             onMouseLeave={() => setContact(false)}
                             dragConstraints={{ left: 0, right: 0 }}
-                            transition={{ duration: 1.5, type: 'spring' }}
+                            transition={{ duration: 2.5, type: 'spring' }}
                         >
                             <div className={styles.ping}>
                                 <div className={styles.innerPing} />
                             </div>
                             <div className="text-sm uppercase text-center h-100% w-full flex justify-center items-center">
-                                <AnimatePresence mode="wait">
+                                <AnimatePresence mode="sync">
                                     {formstart === 'second' && (
-                                        <motion.div className="w-full h-full p-4 overflow-hidden">
+                                        <motion.div className="w-full h-full p-4 overflow-hidden" >
                                             <motion.h1 className="font-bold" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
                                                 Hi, {name}! <br />
                                             </motion.h1>
-                                            <motion.h1 className='italic' initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }}>
+                                            <motion.h1 className='italic' initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ x: -200 }} transition={{ duration: 1, delay: 0.5 }}>
                                                 Pick your Poison
                                             </motion.h1>
                                             <Switcher11 />
-                                            <motion.div initial={{ y: 100 }} animate={{ y: 0, transition: { duration: 1 } }} onClick={() => handleSubmitFinal()} className="bg-primary text-bgColor w-50% rounded-full p-2 absolute bottom-5 left-1/4 cursor-pointer">Send</motion.div>
+                                            <motion.div initial={{ y: 100 }} animate={{ y: 0, transition: { duration: 1 } }} exit={{ y: 100, transition: { duration: 1 } }} onClick={() => handleSubmitFinal()} className="bg-primary text-bgColor w-50% rounded-full p-2 absolute bottom-5 left-1/4 cursor-pointer">Send</motion.div>
                                         </motion.div>
                                     )}
                                     {formstart === 'first' && (
@@ -144,10 +144,10 @@ function HeroSection() {
                                             <input type="text" onChange={(e) => setName(e.target.value)} className='border-b-primary border-b-2 focus:outline-none' />
                                         </motion.form>
                                     )}
-                                    {formstart === 'initial' && (<div>
+                                    {formstart === 'initial' && (<motion.div>
                                         <motion.h1 className='text-[min(11px,10vw)]' animate={{ y: contact ? -2 : 10, rotateX: contact ? 90 : 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3, type: 'tween', ease: 'circOut' }}>Have an idea already?</motion.h1>
                                         <motion.h1 className='text-[min(11px,10vw)]' animate={{ y: contact ? -10 : 0, rotateX: contact ? 0 : -90 }} exit={{ opacity: 0 }} transition={{ duration: 0.3, type: 'tween', ease: 'circOut' }}>Send me a Message</motion.h1>
-                                    </div>)}
+                                    </motion.div>)}
                                 </AnimatePresence>
                             </div>
                         </motion.div>

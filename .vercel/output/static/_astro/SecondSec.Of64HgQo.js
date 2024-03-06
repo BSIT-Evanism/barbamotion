@@ -1,0 +1,1 @@
+import{j as e}from"./errors.2Yo2ovm5.js";import"./index.UCAuQZPX.js";import{h as o}from"./globalStore.kNrtANdh.js";import{m as n}from"./motion.cW9GjXZd.js";function a(){return e.jsx(n.div,{id:"secondSec",onViewportEnter:()=>o("second"),onViewportLeave:()=>o("none"),className:"h-100vh bg-platinum w-full"})}export{a as default};

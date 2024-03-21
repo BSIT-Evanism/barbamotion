@@ -17,7 +17,7 @@ function FixedImageReact() {
         ref: ref,
         offset: ["start end", 'end end']
     })
-    const imgParallax = useTransform(scrollYProgress, [0, 1], [0, -600])
+    const imgParallax = useTransform(scrollYProgress, [0, 1], [0, -800])
 
 
     // gsap.to(ref, {
@@ -47,7 +47,7 @@ function FixedImageReact() {
         <motion.div onViewportEnter={() => handleMarquee("intro")} onViewportLeave={() => handleMarquee("none")} className="rounded-6vh overflow-hidden h-[max(500px,40vh)] w-50vw m-10">
             <motion.img
                 style={{ y: imgParallax }}
-                src="https://images.unsplash.com/photo-1704589148269-dbd0e200e69f?q=80&w=1588&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://images.unsplash.com/photo-1564078516393-cf04bd966897?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="parallax"
                 id="img1"
                 ref={ref}

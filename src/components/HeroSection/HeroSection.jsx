@@ -84,12 +84,12 @@ function HeroSection() {
             <motion.div
                 ref={ref}
                 className={styles.wrapper}
-                initial={{ y: -300 }}
+                initial={{ y: "-100vh" }}
                 animate={{ y: 0 }}
                 style={{ scale: scrollTransform }}
                 onMouseEnter={() => setTilt(false)}
                 onMouseLeave={() => setTilt(true)}
-                transition={{ duration: 2.5, type: "spring", delay: 0.8 }}
+                transition={{ duration: 7.5, type: "spring", delay: 2.8 }}
             >
                 <motion.div
                     className={styles.hero}

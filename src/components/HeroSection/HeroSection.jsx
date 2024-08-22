@@ -89,7 +89,7 @@ function HeroSection() {
                 style={{ scale: scrollTransform }}
                 onMouseEnter={() => setTilt(false)}
                 onMouseLeave={() => setTilt(true)}
-                transition={{ duration: 7.5, type: "spring", delay: 2.8 }}
+                transition={{ duration: 7.5, type: "spring", delay: 0.8 }}
             >
                 <motion.div
                     className={styles.hero}

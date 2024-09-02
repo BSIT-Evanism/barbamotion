@@ -56,7 +56,7 @@ function ToggleBottomBar() {
                 </AnimatePresence>
                 <motion.div className={` ${$toggle ? "border-slate" : "border-black"} flex justify-around items-start h-full w-full gap-4 px-10 py-5 rounded-[2.3rem] z-5 bg-white font-italic text-xl text-center transition-all duration-1000`} >
                     <AnimatePresence>
-                        <motion.div key="button" onClick={handleToggle} whileHover={{ scale: 1.2 }} animate={{ rotate: $toggle ? 90 : 0, width: hover ? "30px" : "10px", transition: { duration: 0.3, type: 'tween' } }} layoutId="buttonnavbar" className={`w-10px h-20px rounded-full ${$toggle ? "bg-white" : "bg-black"} border-primary border-2 cursor-pointer`} >
+                        <motion.div key="button" onClick={handleToggle} whileHover={{ scale: 1.2 }} animate={{ rotate: $toggle ? 90 : 0, width: hover ? "30px" : "10px", transition: { duration: 0.3, type: 'tween' } }} layoutId="buttonnavbar" className={`w-10px h-40px rounded-full ${$toggle ? "bg-white" : "bg-black"} border-primary border-2 cursor-pointer`} >
                         </motion.div>
                         {hover || $toggle ?
                             (<>

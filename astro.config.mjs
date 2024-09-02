@@ -11,6 +11,5 @@ export default defineConfig({
   integrations: [UnoCSS({
     injectReset: true
   }), react()],
-  output: "server",
-  adapter: vercel()
+  output: "static",
 });

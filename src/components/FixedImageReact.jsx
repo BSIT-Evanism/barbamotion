@@ -15,43 +15,42 @@ function FixedImageReact() {
 
     const { scrollYProgress } = useScroll({
         ref: ref,
-        offset: ["start end", 'end end']
+        offset: ["start end", 'end start']
     })
-    const imgParallax = useTransform(scrollYProgress, [0, 1], [0, -800])
-
-
-    // gsap.to(ref, {
-    //     scrollTrigger: {
-    //         trigger: "#img1",
-    //         start: "top bottom",
-    //         end: "bottom top",
-    //         scrub: true,
-    //         markers: true,
-    //     },
-    //     y: -400,
-    //     ease: "none",
-    // });
-
-    // React.useEffect(() => {
-    //     inView(ref, (el) => {
-    //         handleMarquee("intro");
-    //         console.log("intro");
-
-    //         return () => {
-    //             handleMarquee("none");
-    //         };
-    //     });
-    // }, [$marqueeState]);
+    const imgParallax = useTransform(scrollYProgress, [0, 1], ['10%', '-50%'])
 
     return (
-        <motion.div onViewportEnter={() => handleMarquee("intro")} onViewportLeave={() => handleMarquee("none")} className="rounded-6vh overflow-hidden h-[max(500px,40vh)] w-50vw m-10">
-            <motion.img
-                style={{ y: imgParallax }}
-                src="https://images.unsplash.com/photo-1564078516393-cf04bd966897?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="parallax"
-                id="img1"
-                ref={ref}
-            />
+        <motion.div
+            onViewportEnter={() => handleMarquee("intro")}
+            onViewportLeave={() => handleMarquee("none")}
+            className="rounded-4vh overflow-hidden h-[max(500px,40vh)] w-25vw m-10"
+            style={{ position: 'relative' }}
+            ref={ref}
+        >
+            <motion.div
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    overflow: 'hidden'
+                }}
+            >
+                <motion.img
+                    style={{
+                        y: imgParallax,
+                        width: '100%',
+                        height: '120%', // Increase height to allow for parallax movement
+                        objectFit: 'cover',
+                        objectPosition: 'center top'
+                    }}
+                    className='rounded-4vh'
+                    src="/portrait-1.jpeg"
+                    alt="parallax"
+                    id="img1"
+                />
+            </motion.div>
         </motion.div>
     )
 }

@@ -2,7 +2,7 @@ import { atom } from "nanostores";
 
 export type Toggle = boolean;
 export type Route = '/' | '/about' | '/contact';
-export type Hover = 'none' | 'navbar' | 'footer' | 'link' | 'button' | 'accept';
+export type Hover = 'none' | 'navbar' | 'footer' | 'link' | 'button' | 'accept' | 'invisible';
 export type Marquee = string | string[];
 
 export const toggle = atom<Toggle>(false);

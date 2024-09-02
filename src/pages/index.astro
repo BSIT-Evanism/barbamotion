@@ -5,6 +5,10 @@ import MarqueeComp from "../components/MarqueeComp/MarqueeComp";
 import SecondSec from "../components/SecondSec";
 import FixedImageReact from "../components/FixedImageReact";
 import MidSection from "../components/MidSection";
+import FixedImage from "../components/FixedImage.astro";
+import FadingText from "../components/FadingText";
+import { PositionButton } from "../components/Position-Button";
+import { ProjectScroll } from "../components/ProjectScroll";
 ---
 
 <Layout title="Evan Solanoy">
@@ -15,18 +19,31 @@ import MidSection from "../components/MidSection";
     class="p-0.5px -z-2 bg-bgColor relative"
   >
     <div class="sticky -z-1 -mb-100vh top-20vh">
-      <HeroSection client:only />
+      <HeroSection client:only="react" />
       <div class="h-100vh"></div>
     </div>
     <div class="z-20 bg-secondary rounded-t-10vh pt-20 h-400vh w-full pb-20">
-      <MarqueeComp client:only />
-      <FixedImageReact client:only />
+      <MarqueeComp client:only="react" />
+      <div class="flex justify-between items-center">
+        <div class="w-50% flex justify-center items-center">
+          <FixedImageReact client:only="react" />
+        </div>
+        <FadingText client:only />
+      </div>
       <!-- <FixedImage /> -->
-      <div class="h-150vh w-full"></div>
-      <SecondSec client:load />
+      <div class="h-290vh w-full flex flex-col items-center">
+        <h1
+          class="text-center text-20px font-semibold mt-20 pt-20 border-t-2 text-white opacity-50 border-t-white"
+        >
+          A new tech doesn't always mean a new problem nor a new solution, it's
+          an investment for the future.
+        </h1>
+        <PositionButton client:only="react" text="Visit Projects Page?" />
+        <ProjectScroll client:only />
+      </div>
     </div>
 
-    <MidSection client:only />
+    <MidSection client:only="react" />
 
     <div class="w-full h-100vh rounded-t-10vh -mt-100vh bg-primary z-1">
       <div class="h-80vh"></div>
@@ -47,5 +64,5 @@ import MidSection from "../components/MidSection";
 </Layout>
 
 <script>
-  import { routeName, handleMarquee } from "../globalStore.ts";
+  import { routeName, handleMarquee } from "../globalStore";
 </script>

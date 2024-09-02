@@ -4,6 +4,8 @@ import { useStore } from '@nanostores/react'
 import { animate, spring } from 'motion'
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import CustomMouse from './HeroSection/CustomMouse'
+import CustomMouseSecond from './HeroSection/CustomMouseSecond'
+import CustomMouseThird from './HeroSection/CustomMouseThird'
 
 function ToggleBottomBar() {
     const $toggle = useStore(toggle)
@@ -46,6 +48,8 @@ function ToggleBottomBar() {
     return (
         <>
             <CustomMouse />
+            <CustomMouseSecond />
+            <CustomMouseThird />
             <motion.div id="togglebutton" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className="fixed z-2 bottom-10 rounded-10 p-[0.2rem] overflow-hidden" animate={{ y: $viewToggle ? "100vw" : 0 }} transition={{ duration: 2, ease: [0.41, 0.15, 0.06, 0.95] }}>
                 <motion.div style={{ scaleX }} className="absolute w-full h-full top-0 left-0 bg-accent rounded-3xl -z-1"></motion.div>
                 <AnimatePresence>
@@ -56,7 +60,7 @@ function ToggleBottomBar() {
                 </AnimatePresence>
                 <motion.div className={` ${$toggle ? "border-slate" : "border-black"} flex justify-around items-start h-full w-full gap-4 px-10 py-5 rounded-[2.3rem] z-5 bg-white font-italic text-xl text-center transition-all duration-1000`} >
                     <AnimatePresence>
-                        <motion.div key="button" onClick={handleToggle} whileHover={{ scale: 1.2 }} animate={{ rotate: $toggle ? 90 : 0, width: hover ? "30px" : "10px", transition: { duration: 0.3, type: 'tween' } }} layoutId="buttonnavbar" className={`w-10px h-20px rounded-full ${$toggle ? "bg-white" : "bg-black"} border-primary border-2 cursor-pointer`} >
+                        <motion.div key="button" onClick={handleToggle} whileHover={{ scale: 1.2 }} animate={{ rotate: $toggle ? 90 : 0, width: hover ? "30px" : "10px", transition: { duration: 0.3, type: 'tween' } }} layoutId="buttonnavbar" className={`w-10px h-40px rounded-full ${$toggle ? "bg-white" : "bg-black"} border-primary border-2 cursor-pointer`} >
                         </motion.div>
                         {hover || $toggle ?
                             (<>

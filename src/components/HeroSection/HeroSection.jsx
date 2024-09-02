@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./HeroSection.module.scss";
 import { motion, useMotionValue, useSpring, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { getCalApi } from "@calcom/embed-react";
+
 
 function useMousePosition() {
     const [mouseTilt, setMouseTilt] = useState({ xDeg: 0, yDeg: 0 });
@@ -49,6 +51,13 @@ function HeroSection() {
         y: useMotionValue(0),
     };
 
+    useEffect(() => {
+        (async function () {
+            const cal = await getCalApi({ "namespace": "15min" });
+            cal("ui", { "styles": { "branding": { "brandColor": "#000000" } }, "hideEventTypeDetails": false, "layout": "week_view" });
+        })();
+    }, [])
+
 
     const { scrollYProgress } = useScroll()
     const scrollTransform = useTransform(scrollYProgress, [0, 0.4], [1, 0.8]);
@@ -89,7 +98,7 @@ function HeroSection() {
                 style={{ scale: scrollTransform }}
                 onMouseEnter={() => setTilt(false)}
                 onMouseLeave={() => setTilt(true)}
-                transition={{ duration: 7.5, type: "spring", delay: 2.8 }}
+                transition={{ duration: 7.5, type: "spring", delay: 0.8 }}
             >
                 <motion.div
                     className={styles.hero}
@@ -115,7 +124,10 @@ function HeroSection() {
                             className={styles.callFloat}
                             animate={{ width: formstart === 'first' ? '50%' : formstart === 'second' ? '40%' : '30%', height: formstart === 'second' ? '100%' : '15%' }}
                             drag="x"
-                            onClick={() => formstart === 'initial' && setFormstart('first')}
+                            // onClick={() => formstart === 'initial' && setFormstart('first')}
+                            data-cal-namespace="15min"
+                            data-cal-link="evan-forkbun/15min"
+                            data-cal-config='{"layout":"week_view"}'
                             onMouseEnter={() => setContact(true)}
                             onMouseLeave={() => setContact(false)}
                             dragConstraints={{ left: 0, right: 0 }}
@@ -126,7 +138,7 @@ function HeroSection() {
                             </div>
                             <div className="text-sm uppercase text-center h-100% w-full flex justify-center items-center">
                                 <AnimatePresence mode="sync">
-                                    {formstart === 'second' && (
+                                    {/* {formstart === 'second' && (
                                         <motion.div className="w-full h-full p-4 overflow-hidden" >
                                             <motion.h1 className="font-bold" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
                                                 Hi, {name}! <br />
@@ -137,17 +149,17 @@ function HeroSection() {
                                             <Switcher11 />
                                             <motion.div initial={{ y: 100 }} animate={{ y: 0, transition: { duration: 1 } }} exit={{ y: 100, transition: { duration: 1 } }} onClick={() => handleSubmitFinal()} className="bg-primary text-bgColor w-50% rounded-full p-2 absolute bottom-5 left-1/4 cursor-pointer">Send</motion.div>
                                         </motion.div>
-                                    )}
-                                    {formstart === 'first' && (
+                                    )} */}
+                                    {/* {formstart === 'first' && (
                                         <motion.form ref={formRef} className="relative w-80% block border-b border-gray-200 bg-transparent p-2" onSubmit={(e) => handleFirstPart(e)}>
                                             <label className={`absolute pointer-events-none ${name ? "text-2 translate-x-15" : "text-3 translate-x-0"} transition-transform duration-300ms ease top-1`} htmlFor="nameInput">Can I ask for your name?</label>
                                             <input type="text" onChange={(e) => setName(e.target.value)} className='border-b-primary border-b-2 focus:outline-none' />
                                         </motion.form>
-                                    )}
-                                    {formstart === 'initial' && (<motion.div>
+                                    )} */}
+                                    <motion.div>
                                         <motion.h1 className='text-[min(11px,10vw)]' animate={{ y: contact ? -2 : 10, rotateX: contact ? 90 : 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3, type: 'tween', ease: 'circOut' }}>Have an idea already?</motion.h1>
                                         <motion.h1 className='text-[min(11px,10vw)]' animate={{ y: contact ? -10 : 0, rotateX: contact ? 0 : -90 }} exit={{ opacity: 0 }} transition={{ duration: 0.3, type: 'tween', ease: 'circOut' }}>Send me a Message</motion.h1>
-                                    </motion.div>)}
+                                    </motion.div>
                                 </AnimatePresence>
                             </div>
                         </motion.div>

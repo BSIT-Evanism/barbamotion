@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 
-export const PositionButton = ({ text }) => {
+export const PositionButton = ({ text, link }) => {
     const [isHovered, setIsHovered] = useState(false);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [buttonSize, setButtonSize] = useState({ width: 0, height: 0 });
@@ -35,7 +35,8 @@ export const PositionButton = ({ text }) => {
     const circleSize = maxDimension * 2.5; // Increased to ensure full coverage
 
     return (
-        <motion.button
+        <motion.a
+            href={link ?? '#'}
             ref={buttonRef}
             className="w-[20%] min-h-20 rounded-full text-center bg-bgColor text-[20px] font-semibold mt-20 px-8 py-6 border-t-2 opacity-50 border-t-white relative overflow-hidden"
             onMouseMove={handleMouseMove}
@@ -59,6 +60,6 @@ export const PositionButton = ({ text }) => {
                 }
                 transition={{ duration: 0.5, ease: 'easeInOut' }}
             />
-        </motion.button>
+        </motion.a>
     );
 };

@@ -123,11 +123,12 @@
                     }
 
                     &::before {
-                        background-image: url(/public//portrait-2.jpeg);
+                        background-image: url(/public//new-port.jpeg);
                         object-fit: cover;
                         background-size: cover;
                         background-position: center;
                         background-repeat: no-repeat;
+                        filter: grayscale(100%);
                         content: "";
                         border: #102c57e1 solid 2px;
 

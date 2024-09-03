@@ -31,14 +31,21 @@ function ToggleBottomBar() {
     }, [hover])
 
     useEffect(() => {
-        setInterval(() => {
-            const timer = new Date();
-            setTime(timer.getUTCHours() + ':' + timer.getUTCMinutes())
-            setDate(timer.getDate() + '/' + timer.getMonth() + '/' + timer.getFullYear())
-        }, 1000)
+        const updateTime = () => {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const hours12 = hours % 12 || 12;
+            setTime(`${hours12}:${minutes} ${ampm}`);
+            setDate(`${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`);
+        };
 
-        return () => clearInterval()
-    }, [])
+        updateTime(); // Initial call
+        const intervalId = setInterval(updateTime, 1000);
+
+        return () => clearInterval(intervalId);
+    }, []);
 
     useEffect(() => {
         animate('#togglebutton', { width: $toggle ? "60vw" : "20vw", height: $toggle ? "40vh" : "6vh" }, { duration: 2, easing: [0.81, 0.15, 0.06, 0.95] })

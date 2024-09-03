@@ -46,7 +46,7 @@ function FixedImageReact() {
                         objectPosition: 'center top'
                     }}
                     className='rounded-4vh'
-                    src="/portrait-1.jpeg"
+                    src="/new-port-2.jpeg"
                     alt="parallax"
                     id="img1"
                 />

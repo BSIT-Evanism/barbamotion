@@ -38,7 +38,11 @@ import { ProjectScroll } from "../components/ProjectScroll";
           A new tech doesn't always mean a new problem nor a new solution, it's
           an investment for the future.
         </h1>
-        <PositionButton client:only="react" text="Visit Projects Page?" />
+        <PositionButton
+          client:only="react"
+          text="Visit Projects Page?"
+          link="/projects"
+        />
         <ProjectScroll client:only />
       </div>
     </div>
@@ -46,16 +50,32 @@ import { ProjectScroll } from "../components/ProjectScroll";
     <MidSection client:only="react" />
 
     <div class="w-full h-100vh rounded-t-10vh -mt-100vh bg-primary z-1">
-      <div class="h-80vh"></div>
+      <div class="h-80vh flex justify-center items-center flex-col gap-8">
+        <h1 class="text-white text-center text-8xl font-semibold">
+          Have a project in mind?
+        </h1>
+        <p class="text-white text-center text-2xl">
+          I'm currently available for freelance work.
+        </p>
+        <PositionButton client:only="react" text="Contact Me" link="/contact" />
+      </div>
       <div
         class="bg-platinum h-20vh rounded-t-10vh flex justify-center bottom-0 items-center sticky"
       >
         <div class="w-80vw flex gap-10 justify-between items-center px-10">
-          <h1 class="text-5xl w-30% text-center">Contact</h1>
+          <div class="flex gap-2">
+            <h1 class="text-md w-20 text-center">LinkedIn</h1>
+            <p>-</p>
+            <h1 class="text-md w-20 text-center">Facebook</h1>
+            <p>-</p>
+            <h1 class="text-md w-20 text-center">Instagram</h1>
+            <p>-</p>
+            <h1 class="text-md w-20 text-center">Telegram</h1>
+          </div>
           <p class="text-center w-30% text-justify">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quibusdam, quia, quae voluptates voluptatem quod
-            voluptatibus quos doloribus quidem voluptate.
+            Designed and Developed by Evan Solanoy <br />
+            ©2024 – All Rights Reserved <br />
+            <a href="mailto:evansolanoy@gmail.com">evansolanoy@gmail.com</a>
           </p>
         </div>
       </div>

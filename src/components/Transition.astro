@@ -90,7 +90,8 @@
       {
         name: "default",
 
-        async leave(data) {
+        async leave(data: any) {
+          // @ts-ignore
           const done = this?.async?.();
 
           //   timeline(sequence, { duration: 2.5 });

@@ -109,6 +109,7 @@ function HeroSection() {
                 // animate={{rotateX: mouseTilt.yDeg, rotateY: mouseTilt.xDeg}}
                 >
                     <div className={styles.inner}>
+                        <img src="/showreel.gif" className="object-cover h-full w-full rounded-inherit opacity-30 hover:opacity-100 transition-all duration-300" alt="showreel" />
                         <div
                             className={styles.contain}
                         >

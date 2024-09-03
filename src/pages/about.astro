@@ -1,13 +1,63 @@
 ---
-import GridComp from "../components/GridComp";
 import Layout from "../layouts/Layout.astro";
+import BentoBox from "../components/BentoBox.astro";
+import { Image } from "astro:assets";
+import profilePic from "../../public/portrait-1.jpeg";
+import projectImage1 from "../../public/scr-1.webp";
+import projectImage2 from "../../public/scr-2.webp";
+import skillsImage from "../../public/new-port-2.jpeg";
 ---
 
-<Layout title="about">
-  <main data-barba="container" data-barba-namespace="about">
-    <div class="h-400vh bg-bgColor relative">
-      <h1 class="text-8xl font-bold ml-4" id="titlehome">About</h1>
-      <!-- <GridComp client:load /> -->
+<Layout title="About">
+  <main
+    data-barba="container"
+    data-barba-namespace="about"
+    class="p-4 md:p-8 bg-bgColor"
+  >
+    <h1 class="text-6xl md:text-8xl font-bold mb-8 text-primary">About Me</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <BentoBox class="md:col-span-2 row-span-2">
+        <Image
+          src={profilePic}
+          alt="Profile"
+          class="w-full h-full object-cover rounded-lg"
+        />
+      </BentoBox>
+
+      <BentoBox>
+        <h2 class="text-4xl font-semibold mb-2 text-platinum">Who I Am</h2>
+        <p class="text-bgColor text-2xl">
+          I'm a passionate developer with a knack for creating beautiful,
+          functional websites using bleeding edge technologies without
+          sacrificing functionality. With years of experience in web
+          technologies, I bring ideas to life through code.
+        </p>
+      </BentoBox>
+
+      <BentoBox>
+        <Image
+          src={projectImage1}
+          alt="Project 1"
+          class="w-full h-full object-cover rounded-lg"
+        />
+      </BentoBox>
+
+      <BentoBox>
+        <Image
+          src={projectImage2}
+          alt="Project 2"
+          class="w-full h-full object-cover rounded-lg"
+        />
+      </BentoBox>
+
+      <BentoBox class="md:col-span-2">
+        <Image
+          src={skillsImage}
+          alt="Skills"
+          class="w-full h-full object-cover rounded-lg"
+        />
+      </BentoBox>
     </div>
   </main>
 </Layout>

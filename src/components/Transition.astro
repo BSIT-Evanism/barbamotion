@@ -95,7 +95,7 @@
           const done = this?.async?.();
 
           //   timeline(sequence, { duration: 2.5 });
-          const transcontrol = timeline(sequence, { duration: 3.5 });
+          const transcontrol = timeline(sequence, { duration: 2.5 });
           if (label) {
             timeline(staggerSequence, { duration: 2.5 });
             label.innerHTML = `<span class="">Navigating to ${
@@ -104,8 +104,8 @@
                 : "Home"
             }</span>`;
           }
-          timeline(textsequence, { duration: 3.5 });
-          await delay(1500);
+          timeline(textsequence, { duration: 2.5 });
+          await delay(1000);
           if (done) {
             done();
           }

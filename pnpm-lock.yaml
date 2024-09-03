@@ -93,6 +93,9 @@ importers:
       '@unocss/reset':
         specifier: ^0.58.0
         version: 0.58.0
+      '@unocss/transformer-variant-group':
+        specifier: ^0.62.3
+        version: 0.62.3
       unocss:
         specifier: ^0.58.0
         version: 0.58.0(postcss@8.4.33)(rollup@4.9.4)(vite@5.0.11(@types/node@22.5.0)(sass@1.69.6))
@@ -1332,6 +1335,9 @@ packages:
   '@unocss/core@0.58.0':
     resolution: {integrity: sha512-KhABQXGE2AgtO9vE28d+HnciuyGDcuygsnQdUwlzUuR4K05OSw2kRE9emRN4HaMycD+gA/zDbQrJxTXb6mQUiA==}
 
+  '@unocss/core@0.62.3':
+    resolution: {integrity: sha512-Pfyrj8S7jq9K1QXD6Z5BCeiQavaHpbMN5q958/kmdbNGp57hOg1e346fMJAvgPjLBR+lE/hgZEsDrijtRiZXnw==}
+
   '@unocss/extractor-arbitrary-variants@0.58.0':
     resolution: {integrity: sha512-s9wK2UugJM0WK1HpgPz2kTbpeyQc46zais+nauN/ykVX6NMq8PtGzSWszzf+0aIbtWAQGiqAfiYNTpf09tJHfg==}
 
@@ -1392,6 +1398,9 @@ packages:
 
   '@unocss/transformer-variant-group@0.58.0':
     resolution: {integrity: sha512-O2n8uVIpNic57rrkaaQ8jnC1WJ9N6FkoqxatRDXZ368aJ1CJNya0ZcVUL6lGGND0bOLXen4WmEN62ZxEWTqdkA==}
+
+  '@unocss/transformer-variant-group@0.62.3':
+    resolution: {integrity: sha512-oNX1SdfWemz0GWGSXACu8NevM0t2l44j2ancnooNkNz3l1+z1nbn4vFwfsJCOqOaoVm4ZqxaiQ8HIx81ZSiU1A==}
 
   '@unocss/vite@0.58.0':
     resolution: {integrity: sha512-OCUOLMSOBEtXOEyBbAvMI3/xdR175BWRzmvV9Wc34ANZclEvCdVH8+WU725ibjY4VT0gVIuX68b13fhXdHV41A==}
@@ -4849,6 +4858,8 @@ snapshots:
 
   '@unocss/core@0.58.0': {}
 
+  '@unocss/core@0.62.3': {}
+
   '@unocss/extractor-arbitrary-variants@0.58.0':
     dependencies:
       '@unocss/core': 0.58.0
@@ -4950,6 +4961,10 @@ snapshots:
   '@unocss/transformer-variant-group@0.58.0':
     dependencies:
       '@unocss/core': 0.58.0
+
+  '@unocss/transformer-variant-group@0.62.3':
+    dependencies:
+      '@unocss/core': 0.62.3
 
   '@unocss/vite@0.58.0(rollup@4.9.4)(vite@5.0.11(@types/node@22.5.0)(sass@1.69.6))':
     dependencies:

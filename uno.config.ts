@@ -1,4 +1,4 @@
-import { defineConfig, presetUno } from 'unocss'
+import { defineConfig, presetUno, transformerVariantGroup } from 'unocss'
 
 export default defineConfig({
     theme: {
@@ -9,6 +9,9 @@ export default defineConfig({
             platinum: '#CFDBD5',
             accent: '#F5CB5C'
         }
-    }
-    
+    },
+    transformers: [
+        transformerVariantGroup()
+    ]
+
 })

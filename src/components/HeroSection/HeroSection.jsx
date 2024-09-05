@@ -101,31 +101,25 @@ function HeroSection() {
                 transition={{ duration: 7.5, type: "spring", delay: 0.8 }}
             >
                 <motion.div
-                    className={styles.hero}
+                    className={`${styles.hero} hidden md:block`}
                     style={{ rotateX: xSpring, rotateY: ySpring }}
                     onMouseEnter={() => setHover(false)}
                     onMouseLeave={() => setHover(true)}
-
-                // animate={{rotateX: mouseTilt.yDeg, rotateY: mouseTilt.xDeg}}
                 >
-                    <div className={styles.inner}>
-                        <img src="/showreel.gif" className="object-cover h-full w-full rounded-inherit opacity-30 hover:opacity-100 transition-all duration-300" alt="showreel" />
-                        <div
-                            className={styles.contain}
-                        >
+                    <div className={`${styles.inner} hidden md:block`}>
+                        <img src="/showreel.gif" className="object-cover h-full w-full rounded-inherit opacity-30 hover:opacity-100 transition-all duration-300 hidden md:block" alt="showreel" />
+                        <div className={styles.contain}>
                             <div className={`${styles.float} text-primary`}>
-                                {/* <img src="/public/Portrait.jpg" className="object-cover h-full w-full" alt="portrait" /> */}
-                                <h1 className={styles.heroText}>
+                                <h1 className={`${styles.heroText} text-4xl md:text-6xl lg:text-8xl`}>
                                     Evan <br />
                                     Solanoy
                                 </h1>
                             </div>
                         </div>
                         <motion.div
-                            className={styles.callFloat}
+                            className={`${styles.callFloat} hidden md:block`}
                             animate={{ width: formstart === 'first' ? '50%' : formstart === 'second' ? '40%' : '30%', height: formstart === 'second' ? '100%' : '15%' }}
                             drag="x"
-                            // onClick={() => formstart === 'initial' && setFormstart('first')}
                             data-cal-namespace="15min"
                             data-cal-link="evan-forkbun/15min"
                             data-cal-config='{"layout":"week_view"}'
@@ -139,24 +133,6 @@ function HeroSection() {
                             </div>
                             <div className="text-sm uppercase text-center h-100% w-full flex justify-center items-center">
                                 <AnimatePresence mode="sync">
-                                    {/* {formstart === 'second' && (
-                                        <motion.div className="w-full h-full p-4 overflow-hidden" >
-                                            <motion.h1 className="font-bold" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-                                                Hi, {name}! <br />
-                                            </motion.h1>
-                                            <motion.h1 className='italic' initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ x: -200 }} transition={{ duration: 1, delay: 0.5 }}>
-                                                Pick your Poison
-                                            </motion.h1>
-                                            <Switcher11 />
-                                            <motion.div initial={{ y: 100 }} animate={{ y: 0, transition: { duration: 1 } }} exit={{ y: 100, transition: { duration: 1 } }} onClick={() => handleSubmitFinal()} className="bg-primary text-bgColor w-50% rounded-full p-2 absolute bottom-5 left-1/4 cursor-pointer">Send</motion.div>
-                                        </motion.div>
-                                    )} */}
-                                    {/* {formstart === 'first' && (
-                                        <motion.form ref={formRef} className="relative w-80% block border-b border-gray-200 bg-transparent p-2" onSubmit={(e) => handleFirstPart(e)}>
-                                            <label className={`absolute pointer-events-none ${name ? "text-2 translate-x-15" : "text-3 translate-x-0"} transition-transform duration-300ms ease top-1`} htmlFor="nameInput">Can I ask for your name?</label>
-                                            <input type="text" onChange={(e) => setName(e.target.value)} className='border-b-primary border-b-2 focus:outline-none' />
-                                        </motion.form>
-                                    )} */}
                                     <motion.div>
                                         <motion.h1 className='text-[min(11px,10vw)]' animate={{ y: contact ? -2 : 10, rotateX: contact ? 90 : 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3, type: 'tween', ease: 'circOut' }}>Have an idea already?</motion.h1>
                                         <motion.h1 className='text-[min(11px,10vw)]' animate={{ y: contact ? -10 : 0, rotateX: contact ? 0 : -90 }} exit={{ opacity: 0 }} transition={{ duration: 0.3, type: 'tween', ease: 'circOut' }}>Send me a Message</motion.h1>
@@ -166,6 +142,14 @@ function HeroSection() {
                         </motion.div>
                     </div>
                 </motion.div >
+                <div className="md:hidden flex flex-col w-full h-70% justify-end items-end">
+                    <h1 className="text-7xl md:text-6xl lg:text-8xl text-primary font-bold uppercase z-10 p-6">Evan Solanoy</h1>
+                    <div className="flex flex-col gap-2">
+                        <h1>Full Stack Developer</h1>
+                        <h1>Creative UI/UX Designer</h1>
+                    </div>
+                    <img src="/showreel.gif" className="object-cover h-80% w-full rounded-inherit opacity-30 hover:opacity-100 absolute top-0 left-0 transition-all duration-300 md:hidden block" alt="showreel" />
+                </div>
             </motion.div >
         </>
     );

@@ -38,7 +38,7 @@ export const PositionButton = ({ text, link }) => {
         <motion.a
             href={link ?? '#'}
             ref={buttonRef}
-            className="w-[20%] min-h-20 rounded-full text-center bg-bgColor text-[20px] font-semibold mt-20 px-8 py-6 border-t-2 opacity-50 border-t-white relative overflow-hidden"
+            className="w-[20%] min-h-20 md:block hidden rounded-full text-center bg-bgColor text-[20px] font-semibold mt-20 px-8 py-6 border-t-2 opacity-50 border-t-white relative overflow-hidden"
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}

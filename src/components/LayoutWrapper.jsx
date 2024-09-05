@@ -31,7 +31,7 @@ function LayoutWrapper({ children }) {
                     </motion.div>
                 </div>)}
             </AnimatePresence>
-            <div className={`${$toggle ? "scale-90" : "scale-100"} transition-all duration-2000 ease-[cubic-bezier(0.81, 0.15, 0.06, 0.95)] h-fit w-full`}>
+            <div className={`${$toggle ? "scale-90" : "scale-100"} transition-all duration-2000 ease-[cubic-bezier(0.81, 0.15, 0.06, 0.95)] h-fit w-screen p-0`}>
                 {children}
             </div>
             <div className='-z-20 bg-primary fixed w-screen h-screen top-0'></div>

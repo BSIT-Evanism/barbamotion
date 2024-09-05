@@ -18,22 +18,27 @@ import { ProjectScroll } from "../components/ProjectScroll";
     data-barba-container="home"
     class="p-0.5px -z-2 bg-bgColor relative"
   >
-    <div class="sticky -z-1 -mb-100vh top-20vh">
+    <div class="md:sticky md:top-20vh -z-1 -mb-100vh">
       <HeroSection client:only="react" />
       <div class="h-100vh"></div>
     </div>
-    <div class="z-20 bg-secondary rounded-t-10vh pt-20 h-400vh w-full pb-20">
+    <div
+      class="z-20 bg-secondary rounded-t-10vh pt-20 min-h-200vh md:min-h-400vh w-full pb-20"
+    >
       <MarqueeComp client:only="react" />
-      <div class="flex justify-between items-center">
-        <div class="w-50% flex justify-center items-center">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="w-full md:w-1/2 flex justify-center items-center">
           <FixedImageReact client:only="react" />
         </div>
-        <FadingText client:only />
+        <div class="w-full md:w-1/2">
+          <FadingText client:only />
+        </div>
       </div>
-      <!-- <FixedImage /> -->
-      <div class="h-320vh w-full flex flex-col items-center">
+      <div
+        class="md:min-h-320vh min-h-100vh w-full flex flex-col items-center px-4 md:px-0"
+      >
         <h1
-          class="text-center text-20px font-semibold mt-20 pt-20 border-t-2 text-white opacity-50 border-t-white"
+          class="text-center text-16px md:text-20px font-semibold mt-10 md:mt-20 pt-10 md:pt-20 border-t-2 text-white opacity-50 border-t-white"
         >
           A new tech doesn't always mean a new problem nor a new solution, it's
           an investment for the future.
@@ -51,31 +56,53 @@ import { ProjectScroll } from "../components/ProjectScroll";
 
     <div
       id="contact"
-      class="w-full h-100vh rounded-t-10vh -mt-100vh bg-primary z-1"
+      class="w-full min-h-100vh md:rounded-t-10vh rounded-t-0vh mt-10 md:-mt-100vh bg-primary z-1"
     >
-      <div class="h-80vh flex justify-center items-center flex-col gap-8">
-        <h1 class="text-white text-center text-8xl font-semibold">
+      <div
+        class="min-h-80vh flex justify-center items-center flex-col gap-4 md:gap-8 px-4 md:px-0"
+      >
+        <h1 class="text-white text-center text-4xl md:text-8xl font-semibold">
           Have a project in mind?
         </h1>
-        <p class="text-white text-center text-2xl">
+        <p class="text-white text-center text-lg md:text-2xl">
           I'm currently available for freelance work.
         </p>
         <PositionButton client:only="react" text="Contact Me" link="/contact" />
       </div>
       <div
-        class="bg-platinum h-20vh rounded-t-10vh flex justify-center bottom-0 items-center sticky"
+        class="bg-platinum min-h-20vh rounded-t-10vh flex justify-center bottom-0 items-center sticky"
       >
-        <div class="w-80vw flex gap-10 justify-between items-center px-10">
-          <div class="flex gap-2">
-            <h1 class="text-md w-20 text-center">LinkedIn</h1>
-            <p>-</p>
-            <h1 class="text-md w-20 text-center">Facebook</h1>
-            <p>-</p>
-            <h1 class="text-md w-20 text-center">Instagram</h1>
-            <p>-</p>
-            <h1 class="text-md w-20 text-center">Telegram</h1>
+        <div
+          class="w-full md:w-80vw flex flex-col md:flex-row gap-4 md:gap-10 justify-between items-center px-4 md:px-10 py-4 md:py-0"
+        >
+          <div class="flex flex-wrap justify-center md:justify-start gap-2">
+            <a
+              href="https://linkedin.com/in/john-evan-solanoy-72b829262"
+              target="_blank"
+              class="text-sm md:text-md w-20 text-center">LinkedIn</a
+            >
+            <p class="hidden md:block">-</p>
+            <a
+              href="https://facebook.com/evan.solanoy.1/"
+              target="_blank"
+              class="text-sm md:text-md w-20 text-center">Facebook</a
+            >
+            <p class="hidden md:block">-</p>
+            <a
+              href="https://github.com/BSIT-Evanism"
+              target="_blank"
+              class="text-sm md:text-md w-20 text-center">Github</a
+            >
+            <p class="hidden md:block">-</p>
+            <a
+              href="https://t.me/evansolanoy"
+              target="_blank"
+              class="text-sm md:text-md w-20 text-center">Telegram</a
+            >
           </div>
-          <p class="text-center w-30% text-justify">
+          <p
+            class="text-center md:text-justify text-sm md:text-base w-full md:w-30%"
+          >
             Designed and Developed by Evan Solanoy <br />
             ©2024 – All Rights Reserved <br />
             <a href="mailto:evansolanoy@gmail.com">evansolanoy@gmail.com</a>

@@ -17,7 +17,7 @@ function Navbar() {
       ref={ref}
       className="flex px-10 py-5 z-10 bg-bgColor text-primary justify-between items-center"
     >
-      <img id="logo" src="/favicon.svg" alt="logo" className="w-3vw" />
+      <img id="logo" src="/favicon.svg" alt="logo" className="w-10vw md:w-3vw" />
       <NavBarSelection logoState={isInView} />
     </div>
   )

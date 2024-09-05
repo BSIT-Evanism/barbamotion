@@ -37,7 +37,7 @@ function CustomMouse({ stickyRef }) {
     return (
         <>
             <motion.div
-                className={`  bg-bgColor z-20 pointer-events-none rounded-full w-20px h-20px fixed p-1 mix-blend-difference`}
+                className={`  bg-bgColor z-20 pointer-events-none rounded-full w-20px h-20px fixed p-1 mix-blend-difference md:hidden`}
                 transition={{ type: 'tween', ease: 'backOut' }}
                 animate={{ scale: $hoverValue === 'navbar' ? 2.5 : $hoverValue === 'footer' ? 3 : 1, opacity: $hoverValue === 'link' ? 0 : $hoverValue === 'invisible' ? 0 : 1 }}
                 style={{ x: smooth.x, y: smooth.y }}

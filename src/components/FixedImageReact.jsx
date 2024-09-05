@@ -23,7 +23,7 @@ function FixedImageReact() {
         <motion.div
             onViewportEnter={() => handleMarquee("intro")}
             onViewportLeave={() => handleMarquee("none")}
-            className="rounded-4vh overflow-hidden h-[max(500px,40vh)] w-25vw m-10"
+            className="rounded-4vh overflow-hidden h-[max(300px,40vh)] w-70vw md:w-20vw mx-10 my-10 md:mx-10 md:my-10"
             style={{ position: 'relative' }}
             ref={ref}
         >
@@ -41,7 +41,7 @@ function FixedImageReact() {
                     style={{
                         y: imgParallax,
                         width: '100%',
-                        height: '120%', // Increase height to allow for parallax movement
+                        height: '120%',
                         objectFit: 'cover',
                         objectPosition: 'center top'
                     }}

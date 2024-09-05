@@ -5,7 +5,7 @@ import { marqueeState } from '../../globalStore'
 
 const marquee = {
     animate: {
-        x: [0, -198],
+        x: [0, -350],
         transition: {
             x: {
                 repeat: Infinity,
@@ -19,7 +19,7 @@ const marquee = {
 
 const marqueeReverse = {
     animate: {
-        x: [-198, 0],
+        x: [-350, 0],
         transition: {
             x: {
                 repeat: Infinity,
@@ -36,7 +36,7 @@ function MarqueeComp() {
     const $marqueeState = useStore(marqueeState);
 
     return (
-        <motion.div layout className='sticky top-20 overflow-hidden h-15vh'>
+        <motion.div layout className='md:sticky relative md:top-20 top-0 overflow-hidden h-15vh'>
             <motion.div variants={marquee} animate="animate" className='w-full opacity-30 h-fit text-xl whitespace-nowrap flex gap-50 text-center text-bgColor mix-blend-difference'>
                 {[...Array(20)].map((_, i) => (
                     <span key={i} className='inline-block w-fit h-full uppercase  font-semibold'>evan solanoy</span>

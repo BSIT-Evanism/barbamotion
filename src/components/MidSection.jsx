@@ -1,6 +1,5 @@
 import { useScroll, useTransform, motion } from 'framer-motion'
 import { useRef } from 'react'
-import DotPattern from './DotBackground'
 
 function MidSection() {
     const ref = useRef(null)

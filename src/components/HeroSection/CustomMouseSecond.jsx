@@ -41,7 +41,7 @@ function CustomMouseSecond({ stickyRef }) {
 
     return (
         <motion.div
-            className={` w-30 h-10 rounded-lg flex items-center justify-center bg-secondary z-20 pointer-events-none fixed p-1 md:hidden`}
+            className={` w-30 h-10 rounded-lg items-center justify-center bg-secondary z-20 pointer-events-none p-1 md:flex hidden fixed`}
             transition={{ type: 'tween', ease: 'backOut' }}
             animate={{ scale: $hoverValue === 'link' ? 1 : 0, opacity: $hoverValue === 'invisible' ? 0 : 1 }}
             style={{ x: smooth.x, y: smooth.y }}

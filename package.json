@@ -24,6 +24,7 @@
     "@types/react-dom": "^18.2.18",
     "astro": "^4.1.1",
     "astro-analytics": "^2.7.0",
+    "clsx": "^2.1.1",
     "daisyui": "^3.0.0",
     "framer-motion": "^10.16.16",
     "gsap": "^3.12.4",
@@ -34,6 +35,7 @@
     "react-dom": "^18.2.0",
     "react-grid-layout": "^1.4.4",
     "sass": "^1.69.6",
+    "tailwind-merge": "^2.5.2",
     "typescript": "^5.3.3",
     "unocss-preset-daisy": "^7.0.0"
   },

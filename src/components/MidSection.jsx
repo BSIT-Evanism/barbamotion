@@ -14,7 +14,7 @@ function MidSection() {
     return (
         <div ref={ref} className="w-full md:h-300vh md:-mt-100vh md:-mb-100vh h-100vh m-0">
             <div
-                className="h-100vh flex justify-center items-center w-full top-0 md:sticky block bg-accent -z-1"
+                className="h-100vh flex justify-center items-center w-full top-0 md:sticky block bg-bgColor -z-1"
             >
                 <div className="w-60vw hidden md:block" id="scrollmid" >
                     <motion.h1

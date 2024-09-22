@@ -36,7 +36,7 @@ function CustomMouseThird({ stickyRef }) {
 
     return (
         <motion.div
-            className={` w-8 h-8 m-1 rounded-md  bg-bgColor z-30 pointer-events-none fixed p-1 md:hidden`}
+            className={` w-8 h-8 m-1 rounded-md  bg-bgColor z-30 pointer-events-none p-1 md:flex hidden fixed`}
             transition={{ type: 'tween', ease: 'backOut' }}
             animate={{ scale: $hoverValue === 'link' ? 1 : 0, opacity: $hoverValue === 'invisible' ? 0 : 1 }}
             style={{ x: smooth.x, y: smooth.y }}

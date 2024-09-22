@@ -61,13 +61,7 @@ function NavBarSelection({ logoState }) {
         <>
             <div onMouseEnter={() => handleHover('navbar')} onMouseLeave={() => handleHover('none')} className="md:flex gap-10 hidden list-none [&:has(.linktag:hover)>.linktag:not(:hover)>.dot]:opacity-0 [&:has(.linktag:hover)>.linktag>.dot]:opacity-100">
                 {navBarItems.map((item, i) => (
-                    <motion.a key={i} animate={{
-                        y: logoState ? 0 : '-30vh'
-                    }} transition={{
-                        duration: 5.5
-                        , type: 'spring'
-                        , delay: i * 0.5
-                    }} href={item.link} onClick={() => handleChangeRoute(item.link)} className="text-xl linktag uppercase hover:opacity-50">
+                    <motion.a key={i} href={item.link} onClick={() => handleChangeRoute(item.link)} className="text-xl linktag uppercase hover:opacity-50">
                         {item.name}
                         <div transition={{ duration: 0.5 }} className={`bg-primary w-10px h-10px rounded-full dot ${$routeName === item.link ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200ms ease`}></div>
                     </motion.a>

@@ -8,10 +8,10 @@ export default function FadingText() {
         <motion.div
             onViewportEnter={() => setEntered(true)}
             animate={{ opacity: entered ? 1 : 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="w-full md:w-50% flex justify-center items-center px-4 md:px-0"
+            transition={{ duration: 1, delay: 0.2 }}
+            className="w-full flex justify-start items-center"
         >
-            <p className="text-center text-lg md:text-25px w-full md:w-70% text-white opacity-70 font-semibold text-justify">
+            <p className="text-justify text-lg md:text-25px w-70% leading-relaxed text-white opacity-70 font-normal">
                 {
                     "I like to bleed responsible on production, providing you success and value with new solutions and investment on the future."
                         .split(" ")

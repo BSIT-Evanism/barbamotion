@@ -22,8 +22,8 @@ function useMousePosition() {
         const y = e.clientY;
         const middleX = window.innerWidth / 2;
         const middleY = window.innerHeight / 2;
-        const offsetX = ((x - middleX) / middleX) * 15;
-        const offsetY = ((y - middleY) / middleY) * 15;
+        const offsetX = ((x - middleX) / middleX) * 10;
+        const offsetY = ((y - middleY) / middleY) * 10;
         setMouseTilt({ xDeg: offsetY, yDeg: offsetX });
     };
 
@@ -62,8 +62,8 @@ function HeroSection() {
     const { scrollYProgress } = useScroll()
     const scrollTransform = useTransform(scrollYProgress, [0, 0.4], [1, 0.8]);
 
-    const xSpring = useSpring(heroTilt.x);
-    const ySpring = useSpring(heroTilt.y);
+    const xSpring = useSpring(heroTilt.x, { stiffness: 100, damping: 10 });
+    const ySpring = useSpring(heroTilt.y, { stiffness: 100, damping: 10 });
 
     useEffect(() => {
         if (hover) {
@@ -93,8 +93,8 @@ function HeroSection() {
             <motion.div
                 ref={ref}
                 className={styles.wrapper}
-                initial={{ y: "-100vh" }}
-                animate={{ y: 0 }}
+                // initial={{ y: "-100vh" }}
+                // animate={{ y: 0 }}
                 style={{ scale: scrollTransform }}
                 onMouseEnter={() => setTilt(false)}
                 onMouseLeave={() => setTilt(true)}
@@ -109,7 +109,7 @@ function HeroSection() {
                     <div className={`${styles.inner} hidden md:block`}>
                         <img src="/showreel.gif" className="object-cover h-full w-full rounded-inherit opacity-30 hover:opacity-100 transition-all duration-300 hidden md:block" alt="showreel" />
                         <div className={styles.contain}>
-                            <div className={`${styles.float} text-primary`}>
+                            <div className={`${styles.float} text-slate-500`}>
                                 <h1 className={`${styles.heroText} text-4xl md:text-6xl lg:text-8xl`}>
                                     Evan <br />
                                     Solanoy

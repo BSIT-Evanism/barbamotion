@@ -31,24 +31,24 @@ export const ProjectScroll = () => {
                         <AnimatePresence>
                             {project === 1 && (
                                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1, ease: "circInOut" }} className="w-full md:w-80% h-full absolute bg-secondary text-center">
-                                    <h1 className="text-2xl md:text-4xl font-bold text-bgColor">"A site meant to be a hub for the local community"</h1>
-                                    <p className="text-sm md:text-md text-justify leading-loose text-bgColor mt-5 md:mt-10">Creative Legazpi is a web design and development company that specializes in creating beautiful and functional websites for businesses of all sizes. We are a team of experienced web designers and developers who are passionate about creating websites that are both beautiful and functional.</p>
+                                    <h1 className="text-2xl md:text-4xl font-bold text-bgColor text-start">"A site meant to be a hub for the local community"</h1>
+                                    <p className="text-md md:text-lg text-justify leading-loose text-bgColor mt-5 md:mt-10">Creative Legazpi is a web design and development company that specializes in creating beautiful and functional websites for businesses of all sizes. We are a team of experienced web designers and developers who are passionate about creating websites that are both beautiful and functional.</p>
                                 </motion.div>
                             )}
                         </AnimatePresence>
                         <AnimatePresence>
                             {project === 2 && (
                                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1, ease: "circInOut" }} className="w-full md:w-80% h-full absolute bg-secondary text-center">
-                                    <h1 className="text-2xl md:text-4xl font-bold text-bgColor">"The third forkbun flagship app"</h1>
-                                    <p className="text-sm md:text-md text-justify leading-loose text-bgColor mt-5 md:mt-10">Forkbun Booking App is a web application that allows users to book tables at restaurants. It is a platform that connects users with restaurants and provides a way for users to book tables at their favorite restaurants.</p>
+                                    <h1 className="text-2xl md:text-4xl font-bold text-bgColor text-start">"The third forkbun flagship app"</h1>
+                                    <p className="text-md md:text-lg text-justify leading-loose text-bgColor mt-5 md:mt-10">Forkbun Booking App is a web application that allows users to book tables at restaurants. It is a platform that connects users with restaurants and provides a way for users to book tables at their favorite restaurants.</p>
                                 </motion.div>
                             )}
                         </AnimatePresence>
                         <AnimatePresence>
                             {project === 3 && (
                                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1, ease: "circInOut" }} className="w-full md:w-80% h-full absolute bg-secondary text-center">
-                                    <h1 className="text-2xl md:text-4xl font-bold text-bgColor">"Self assessment for the future of design"</h1>
-                                    <p className="text-sm md:text-md text-justify leading-loose text-bgColor mt-5 md:mt-10">Awwwards Menu Design is a web design project showcasing innovative menu layouts and interactions. It demonstrates creative ways to present restaurant offerings online, combining aesthetics with user experience to elevate digital menu design standards.</p>
+                                    <h1 className="text-2xl md:text-4xl font-bold text-bgColor text-start">"Self assessment for the future of design"</h1>
+                                    <p className="text-md md:text-lg text-justify leading-loose text-bgColor mt-5 md:mt-10">Awwwards Menu Design is a web design project showcasing innovative menu layouts and interactions. It demonstrates creative ways to present restaurant offerings online, combining aesthetics with user experience to elevate digital menu design standards.</p>
                                 </motion.div>
                             )}
                         </AnimatePresence>

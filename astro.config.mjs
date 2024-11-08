@@ -1,6 +1,4 @@
 import { defineConfig } from "astro/config";
-import sentry from "@sentry/astro";
-import spotlightjs from "@spotlightjs/astro";
 import UnoCSS from "unocss/astro";
 import react from "@astrojs/react";
 import node from "@astrojs/node";
@@ -13,5 +11,8 @@ export default defineConfig({
     }),
     react(),
   ],
-  output: "static",
+  output: "server",
+  adapter: node({
+    mode: "standalone",
+  }),
 });

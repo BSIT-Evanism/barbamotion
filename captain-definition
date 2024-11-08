@@ -2,8 +2,7 @@
   "schemaVersion": 2,
   "dockerfileLines": [
     "FROM node:lts AS base",
-    "WORKDIR /app",
-    "COPY /app/dist ./dist",
+    "COPY . .",
     "FROM base as runtime",
     "ENV HOST=0.0.0.0",
     "ENV PORT=4321",

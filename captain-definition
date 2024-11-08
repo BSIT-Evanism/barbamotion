@@ -1,6 +1,7 @@
  {
   "schemaVersion": 2,
   "dockerfileLines": [
+    "FROM node:lts as runtime"
     "ENV HOST=0.0.0.0",
     "ENV PORT=4321",
     "EXPOSE 4321",

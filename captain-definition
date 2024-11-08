@@ -1,12 +1,9 @@
  {
   "schemaVersion": 2,
   "dockerfileLines": [
-    "FROM node:lts AS base",
-    "COPY . .",
-    "FROM base as runtime",
-    "ENV HOST=0.0.0.0",
-    "ENV PORT=4321",
-    "EXPOSE 4321",
-    "CMD node ./dist/server/entry.mjs"
+    "FROM nginx:alpine AS runtime",
+    "COPY ./nginx/nginx.conf /etc/nginx/nginx.conf",
+    "COPY ./dist /usr/share/nginx/html",
+    "EXPOSE 8080",
   ]
  }

@@ -1,6 +1,7 @@
 FROM node:lts AS runtime
 WORKDIR /app
 
+RUN npm install
 COPY . .
 
 ENV HOST=0.0.0.0

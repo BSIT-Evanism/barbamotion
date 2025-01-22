@@ -3,6 +3,8 @@ import UnoCSS from "unocss/astro";
 import react from "@astrojs/react";
 import node from "@astrojs/node";
 
+import vercel from "@astrojs/vercel/serverless";
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -12,7 +14,5 @@ export default defineConfig({
     react(),
   ],
   output: "server",
-  adapter: node({
-    mode: "standalone",
-  }),
+  adapter: vercel(),
 });

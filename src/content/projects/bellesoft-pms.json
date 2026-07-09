@@ -1,0 +1,10 @@
+{
+  "title": "Bellesoft PMS",
+  "description": "Large-scale Property Management System with Accounts Receivable module, room reservations, blockings, housekeeping, and point-of-sale (POS) systems. Includes Sales & Catering interfaces for function room bookings, event management, and lead pipelines, plus real-time digital signage software synced with the core sales ecosystem.",
+  "image": "/scr-1.webp",
+  "link": "https://bellesoft.com",
+  "tags": ["Frontend", "Hospitality", "PMS", "POS", "Digital Signage"],
+  "year": "2025",
+  "featured": true,
+  "order": 1
+}

@@ -1,5 +1,4 @@
-import React from 'react'
-import { LayoutGroup, motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 import { useStore } from '@nanostores/react'
 import { marqueeState } from '../../globalStore'
 

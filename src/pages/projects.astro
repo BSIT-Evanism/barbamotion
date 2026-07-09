@@ -1,47 +1,165 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { PositionButton } from "../components/Position-Button";
+import { createReader } from "@keystatic/core/reader";
+import keystaticConfig from "../../keystatic.config";
+
+const reader = createReader(process.cwd(), keystaticConfig);
+
+const allProjects = await reader.collections.projects.all();
+
+const sortedProjects = allProjects.sort((a, b) => {
+  const orderA = a.entry.order ?? 0;
+  const orderB = b.entry.order ?? 0;
+  return orderA - orderB;
+});
+
+const featuredProjects = sortedProjects.filter((p) => p.entry.featured);
+const otherProjects = sortedProjects.filter((p) => !p.entry.featured);
 ---
 
 <Layout title="Projects">
-    <main
-        data-barba="container"
-        data-barba-namespace="projects"
-        class="p-4 md:p-8 bg-bgColor"
-    >
-        <div
-            class="flex flex-col items-center justify-center min-h-screen text-center p-4"
-        >
-            <h1
-                class="text-4xl md:text-6xl lg:text-8xl font-bold mb-8 text-primary"
-            >
-                Under Maintenance
-            </h1>
-            <p class="text-2xl md:text-4xl lg:text-6xl mb-8 text-secondary">
-                We're working hard to bring you new projects. Stay tuned!
-            </p>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-construction"
-                ><rect x="2" y="6" width="20" height="8" rx="1"></rect><path
-                    d="M17 14v7"></path><path d="M7 14v7"></path><path
-                    d="M17 3v3"></path><path d="M7 3v3"></path><path
-                    d="M10 14 2.3 6.3"></path><path d="m14 6 7.7 7.7"
-                ></path><path d="m8 6 8 8"></path></svg
-            >
-            <a
-                href="/"
-                class="bg-primary text-white px-8 py-4 rounded-full text-2xl font-semibold"
-            >
-                Go Back Home
-            </a>
-        </div>
-    </main>
+  <main class="bg-bgColor min-h-screen">
+    <section class="px-4 md:px-8 pt-12 md:pt-20 pb-8">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="text-5xl md:text-8xl font-bold text-primary mb-4">
+          Projects
+        </h1>
+        <p class="text-lg md:text-xl text-secondary max-w-2xl leading-relaxed">
+          A selection of work I've built — from enterprise hospitality systems to
+          community platforms. Each project reflects my focus on blending
+          scalable architecture with fluid user experience.
+        </p>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    {
+      featuredProjects.length > 0 && (
+        <section class="px-4 md:px-8 py-8 md:py-12">
+          <div class="max-w-6xl mx-auto">
+            <h2 class="text-sm uppercase tracking-[0.3em] text-secondary font-semibold mb-6">
+              Featured Work
+            </h2>
+            <div class="space-y-6">
+              {featuredProjects.map((project, i) => (
+                <a
+                  href={project.entry.link ?? "#"}
+                  target={project.entry.link?.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  class="group block"
+                >
+                  <div class={`grid grid-cols-1 md:grid-cols-2 gap-0 bg-secondary rounded-2xl overflow-hidden border border-white/5 hover:border-white/15 transition-all duration-300`}>
+                    <div class={`relative overflow-hidden ${i % 2 === 1 ? "md:order-2" : ""}`}>
+                      {project.entry.image ? (
+                        <img
+                          src={project.entry.image}
+                          alt={project.entry.title}
+                          class="w-full h-64 md:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div class="w-full h-64 md:h-80 bg-primary" />
+                      )}
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                    <div class="p-8 md:p-10 flex flex-col justify-center">
+                      <div class="flex items-center gap-3 mb-3">
+                        <span class="text-bgColor text-sm opacity-50">{project.entry.year}</span>
+                        {project.entry.featured && (
+                          <span class="text-xs bg-bgColor/20 text-bgColor px-2 py-0.5 rounded-full uppercase tracking-wider">
+                            Featured
+                          </span>
+                        )}
+                      </div>
+                      <h3 class="text-2xl md:text-4xl font-bold text-platinum mb-3 group-hover:text-bgColor transition-colors">
+                        {project.entry.title}
+                      </h3>
+                      <p class="text-bgColor text-base leading-relaxed opacity-70 mb-5">
+                        {project.entry.description}
+                      </p>
+                      <div class="flex flex-wrap gap-2 mb-5">
+                        {project.entry.tags.map((tag) => (
+                          <span class="text-xs text-bgColor bg-bgColor/10 px-3 py-1 rounded-full">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <div class="flex items-center gap-2 text-bgColor text-sm font-medium opacity-50 group-hover:opacity-100 transition-opacity">
+                        <span>View Project</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <!-- Other Projects -->
+    {
+      otherProjects.length > 0 && (
+        <section class="px-4 md:px-8 py-8 md:py-12">
+          <div class="max-w-6xl mx-auto">
+            <h2 class="text-sm uppercase tracking-[0.3em] text-secondary font-semibold mb-6">
+              More Work
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {otherProjects.map((project) => (
+                <a
+                  href={project.entry.link ?? "#"}
+                  target={project.entry.link?.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  class="group block bg-secondary rounded-xl overflow-hidden border border-white/5 hover:border-white/15 transition-all duration-300 hover:scale-[1.02]"
+                >
+                  {project.entry.image && (
+                    <div class="relative overflow-hidden h-40">
+                      <img
+                        src={project.entry.image}
+                        alt={project.entry.title}
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
+                  <div class="p-5">
+                    <div class="flex items-center justify-between mb-2">
+                      <h3 class="text-lg font-bold text-platinum group-hover:text-bgColor transition-colors">
+                        {project.entry.title}
+                      </h3>
+                      <span class="text-platinum text-xs opacity-50">{project.entry.year}</span>
+                    </div>
+                    <p class="text-bgColor text-sm leading-relaxed opacity-60 mb-3 line-clamp-3">
+                      {project.entry.description}
+                    </p>
+                    <div class="flex flex-wrap gap-1.5">
+                      {project.entry.tags.slice(0, 3).map((tag) => (
+                        <span class="text-xs text-bgColor bg-bgColor/10 px-2 py-0.5 rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <!-- CTA -->
+    <section class="px-4 md:px-8 py-12 md:py-20">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-5xl font-bold text-primary mb-4">
+          Have a project in mind?
+        </h2>
+        <p class="text-lg text-secondary mb-8">
+          I'm always open to new opportunities and collaborations.
+        </p>
+        <PositionButton client:only="react" text="Contact Me" link="/contact" />
+      </div>
+    </section>
+  </main>
 </Layout>

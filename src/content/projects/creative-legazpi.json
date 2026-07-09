@@ -1,0 +1,10 @@
+{
+  "title": "Creative Legazpi",
+  "description": "Interactive platform for an LGU to showcase regional artists. Partnered with local designers and stakeholders to deliver a responsive web experience that directly increased online visibility for the creative community.",
+  "image": "/scr-3.webp",
+  "link": "https://creativelegazpi.ph",
+  "tags": ["Full Stack", "LGU", "Community", "Web Design"],
+  "year": "2023",
+  "featured": true,
+  "order": 3
+}

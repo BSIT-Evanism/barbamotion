@@ -1,0 +1,23 @@
+{
+  "heading": "Skills & Tools",
+  "categories": [
+    {
+      "name": "Frontend",
+      "icon": "code",
+      "skills": [
+        {
+          "name": "React",
+          "proficiency": "advanced"
+        },
+        {
+          "name": "Vue",
+          "proficiency": "advanced"
+        },
+        {
+          "name": "Tailwind CSS",
+          "proficiency": "intermediate"
+        }
+      ]
+    }
+  ]
+}

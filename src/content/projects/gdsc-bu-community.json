@@ -1,0 +1,10 @@
+{
+  "title": "GDSC BU Community Platforms",
+  "description": "Community web platforms built while leading technical teams and mentoring student developers at Google Developer Student Clubs - Bicol University. Structured project architectures for various community-driven initiatives.",
+  "image": "/new-port-2.jpeg",
+  "link": "https://github.com/BSIT-Evanism",
+  "tags": ["Community", "Mentoring", "Architecture", "GDSC"],
+  "year": "2023",
+  "featured": false,
+  "order": 4
+}

@@ -1,0 +1,30 @@
+---
+title: The Art of Creative Web Animation
+excerpt: Exploring how thoughtful animations can elevate user experience without compromising performance or accessibility.
+publishDate: "2024-11-20"
+tags:
+  - Animation
+  - Design
+  - UX
+---
+Animation on the web isn't just about making things move. It's about guiding attention, providing feedback, and creating a sense of space. But there's a fine line between delightful and distracting.
+
+## Animation as communication
+
+Every animation should answer a question: *Where did this come from? Where is it going? Why is it here?*
+
+When a menu slides in from the left, the user understands it came from the left edge. When a card fades in, the user understands it was always there, just hidden. These spatial metaphors are powerful — use them intentionally.
+
+## Performance matters
+
+A janky animation is worse than no animation at all. Here are some rules I follow:
+
+- **Animate `transform` and `opacity` only.** These are compositor-friendly and don't trigger layout.
+- **Use `will-change` sparingly.** It hints the browser to optimize, but overuse causes memory bloat.
+- **Respect `prefers-reduced-motion`.** Some users experience motion sickness — always provide a static fallback.
+
+## The motion library
+
+I've been using the `motion` library (formerly framer-motion) for most of my animation work. It provides both a React component API (`motion/react`) and an imperative API (`motion`), making it flexible for Astro projects where you mix islands with vanilla scripts.
+
+The key insight: **use the right tool for each job**. React components for interactive elements, imperative `animate()` for page-level transitions and scroll effects.

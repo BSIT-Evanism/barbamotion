@@ -1,38 +1,14 @@
-import React, { useEffect } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import About from '../../pages/about.astro'
-import { handleChangeRoute, handleHover, routeName } from '../../globalStore'
+import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
+import { handleChangeRoute, routeName } from '../../globalStore'
 import { useStore } from '@nanostores/react'
 
 
 
 
-function NavBarSelection({ logoState }) {
+function NavBarSelection() {
     const $routeName = useStore(routeName)
-    const [currentRoute, setCurrentRoute] = React.useState('/')
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false)
-
-    const variants = {
-        initial: {
-            y: '-30vh'
-        },
-        animate: (i) => ({
-            y: 0
-            , transition: {
-                duration: 4.5
-                , type: 'spring'
-                , delay: i
-            }
-        }),
-        exit: (i) => ({
-            y: '-30vh'
-            , transition: {
-                duration: 4.5
-                , type: 'spring'
-                , delay: i
-            }
-        }),
-    }
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const navBarItems = [
         {
@@ -44,12 +20,16 @@ function NavBarSelection({ logoState }) {
             link: '/'
         },
         {
-            name: 'Contact',
-            link: '/contact'
-        },
-        {
             name: 'Projects',
             link: '/projects'
+        },
+        {
+            name: 'Blog',
+            link: '/blog'
+        },
+        {
+            name: 'Contact',
+            link: '/contact'
         }
     ]
 
@@ -59,7 +39,7 @@ function NavBarSelection({ logoState }) {
 
     return (
         <>
-            <div onMouseEnter={() => handleHover('navbar')} onMouseLeave={() => handleHover('none')} className="md:flex gap-10 hidden list-none [&:has(.linktag:hover)>.linktag:not(:hover)>.dot]:opacity-0 [&:has(.linktag:hover)>.linktag>.dot]:opacity-100">
+            <div className="md:flex gap-10 hidden list-none [&:has(.linktag:hover)>.linktag:not(:hover)>.dot]:opacity-0 [&:has(.linktag:hover)>.linktag>.dot]:opacity-100">
                 {navBarItems.map((item, i) => (
                     <motion.a key={i} href={item.link} onClick={() => handleChangeRoute(item.link)} className="text-xl linktag uppercase hover:opacity-50">
                         {item.name}

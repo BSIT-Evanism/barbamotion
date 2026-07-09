@@ -1,0 +1,62 @@
+---
+title: Building Smooth Page Transitions with Astro and Motion
+excerpt: Learn how to migrate from barba.js to Astro's ClientRouter and the motion library for seamless, performant page transitions.
+publishDate: "2024-12-15"
+tags:
+  - Astro
+  - Animation
+  - Motion
+---
+Page transitions used to require heavy libraries like barba.js, but modern browsers and frameworks have caught up. With Astro's built-in `<ClientRouter />` component and the `motion` library, you can create buttery-smooth SPA-style transitions with a fraction of the code.
+
+## Why move away from barba.js?
+
+Barba.js was a great tool for its time, but it comes with trade-offs:
+
+- It hijacks navigation, which can conflict with framework routers.
+- It requires manual lifecycle management (`leave`, `enter`, hooks).
+- It duplicates the DOM during transitions, increasing memory usage.
+
+Astro's `<ClientRouter />` leverages the native **View Transitions API**, falling back to a simulated animation for unsupported browsers. This means:
+
+1. Less JavaScript shipped to the client.
+2. Better integration with Astro's component lifecycle.
+3. Automatic support for `prefers-reduced-motion`.
+
+## The migration steps
+
+First, add the `<ClientRouter />` to your layout's `<head>`:
+
+```astro
+---
+import { ClientRouter } from "astro:transitions";
+---
+<ClientRouter />
+```
+
+Then, listen to lifecycle events instead of barba hooks:
+
+```js
+document.addEventListener("astro:before-preparation", (event) => {
+  // Show your transition overlay
+});
+
+document.addEventListener("astro:after-swap", () => {
+  // Hide the overlay, run entry animations
+});
+```
+
+## Animating with motion
+
+The `motion` library (v12) provides a `animate()` function that works great for imperative animations:
+
+```js
+import { animate, stagger } from "motion";
+
+animate(".overlay", { transform: ["scaleY(0)", "scaleY(1)"] }, {
+  duration: 0.5,
+  easing: "ease-in",
+});
+```
+
+The result is a lighter, faster, and more maintainable transition system that feels native to Astro.

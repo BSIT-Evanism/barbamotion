@@ -2,12 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="contact">
+<Layout title="Contact">
   <main
     id="contactpage"
     class="p-4 bg-bgColor"
-    data-barba="container"
-    data-barba-namespace="contact"
   >
     <div class="h-100vh w-full">
       <h1 class="text-8xl font-bold" id="titlehome">Contact</h1>
@@ -23,7 +21,7 @@ import Layout from "../layouts/Layout.astro";
             <div>
               <h3 class="text-2xl md:text-4xl font-semibold mb-2">Email</h3>
               <a
-                href="mailto:contact@example.com"
+                href="mailto:evanismsolanoy@gmail.com"
                 class="text-xl md:text-2xl hover:underline"
                 >evanismsolanoy@gmail.com</a
               >
@@ -31,8 +29,9 @@ import Layout from "../layouts/Layout.astro";
             <div>
               <h3 class="text-2xl md:text-4xl font-semibold mb-2">Phone</h3>
               <a
-                href="tel:+1234567890"
-                class="text-xl md:text-2xl hover:underline">+63 992 737 0926</a
+                href="tel:+639927370926"
+                class="text-xl md:text-2xl hover:underline"
+                >+63 992 737 0926</a
               >
             </div>
           </div>
@@ -40,7 +39,7 @@ import Layout from "../layouts/Layout.astro";
           <div class="space-y-6">
             <div>
               <h3 class="text-2xl md:text-4xl font-semibold mb-2">Location</h3>
-              <p class="text-xl md:text-2xl">Legazpi City, Philippines</p>
+              <p class="text-xl md:text-2xl">Alabang, Muntinlupa City, Metro Manila</p>
             </div>
             <div>
               <h3 class="text-2xl md:text-4xl font-semibold mb-2">Social</h3>
@@ -86,6 +85,23 @@ import Layout from "../layouts/Layout.astro";
                     ></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg
                   >
                 </a>
+                <a
+                  href="https://t.me/evansolanoy"
+                  class="text-3xl hover:text-gray-400"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-send"
+                    ><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg>
+                  </a>
               </div>
             </div>
           </div>
@@ -120,8 +136,12 @@ import Layout from "../layouts/Layout.astro";
 <script>
   import { animate, inView } from "motion";
 
-  inView("#contactpage", (e) => {
-    console.log(e);
-    animate("#titlehome", { y: ["-100vh", 0] }, { duration: 3, delay: 1 });
+  document.addEventListener("astro:page-load", () => {
+    const contactPage = document.querySelector("#contactpage");
+    if (contactPage) {
+      inView("#contactpage", () => {
+        animate("#titlehome", { y: ["-100vh", 0] }, { duration: 3, delay: 1 });
+      });
+    }
   });
 </script>

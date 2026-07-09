@@ -1,9 +1,10 @@
 import { defineConfig } from "astro/config";
-import UnoCSS from "unocss/astro";
+import UnoCSS from "@unocss/astro";
 import react from "@astrojs/react";
-import node from "@astrojs/node";
+import markdoc from "@astrojs/markdoc";
+import keystatic from "@keystatic/astro";
 
-import vercel from "@astrojs/vercel/serverless";
+const enableKeystatic = !process.env.SKIP_KEYSTATIC;
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,6 +13,9 @@ export default defineConfig({
       injectReset: true,
     }),
     react(),
+    markdoc(),
+    ...(enableKeystatic ? [keystatic()] : []),
   ],
   output: "static",
+  compressHTML: true,
 });

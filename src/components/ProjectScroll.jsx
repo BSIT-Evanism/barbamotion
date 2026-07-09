@@ -1,6 +1,5 @@
-import { useMotionValueEvent, useScroll, useTransform, motion, AnimatePresence } from "framer-motion"
+import { useMotionValueEvent, useScroll, useTransform, motion, AnimatePresence } from "motion/react"
 import { useRef, useState } from "react";
-import { handleHover } from "../globalStore";
 
 
 export const ProjectScroll = () => {
@@ -26,7 +25,7 @@ export const ProjectScroll = () => {
         <div ref={scrollRef} className="h-full w-full relative">
             <h1 className="text-4xl md:text-6xl text-center font-bold text-white pt-20 md:pt-60 pb-20 md:pb-40 mx-auto px-4 md:pl-20 mt-10 bg-secondary">Featured Projects</h1>
             <div className="flex flex-col md:flex-row w-full h-fit relative">
-                <div onMouseEnter={() => handleHover('invisible')} onMouseLeave={() => handleHover('none')} className="w-full md:w-1/2 h-auto md:h-100vh bg-secondary md:sticky md:top-35 hidden md:block">
+                <div className="w-full md:w-1/2 h-auto md:h-100vh bg-secondary md:sticky md:top-35 hidden md:block" style={{cursor: 'default'}}>
                     <div className="relative md:absolute top-0 md:top-50vh left-0 w-full h-fit inline-flex px-4 md:pl-10 bg-secondary">
                         <AnimatePresence>
                             {project === 1 && (
@@ -65,7 +64,7 @@ export const ProjectScroll = () => {
                         </AnimatePresence>
                     </div>
                 </div>
-                <div onMouseEnter={() => handleHover('link')} onMouseLeave={() => handleHover('none')} className="w-full md:w-1/2 h-full block top-0 cursor-pointer">
+                <div className="w-full md:w-1/2 h-full block top-0" style={{cursor: 'pointer'}}>
                     <a href="https://creativelegazpi.ph" target="_blank" className="h-60vh md:h-90vh w-full flex flex-col border-2 border-secondary justify-center bg-secondary items-center relative group overflow-hidden">
                         <h1 className="text-xl md:text-3xl font-bold text-secondary z-10 absolute bottom-4 md:bottom-8 left-4 md:left-8 group-hover:text-bgColor group-hover:(bottom-8 md:bottom-15 left-8 md:left-15) transition-all duration-300">Creative Legazpi</h1>
                         <img src="/scr-1.webp" alt="" className="w-full h-full object-cover absolute top-0 left-0 group-hover:(opacity-70 scale-105 blur-2) transition-all duration-300" />

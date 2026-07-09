@@ -1,0 +1,10 @@
+{
+  "title": "Barbamotion Portfolio",
+  "description": "This very portfolio website, built with Astro 7, React 19, and the motion library. Features custom wiper page transitions, Keystatic headless CMS integration, UnoCSS styling, and a unique design philosophy.",
+  "image": "/new-port-2.jpeg",
+  "link": "/",
+  "tags": ["Astro", "Motion", "Keystatic", "Portfolio"],
+  "year": "2024",
+  "featured": false,
+  "order": 5
+}

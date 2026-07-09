@@ -2,9 +2,9 @@ FROM node:lts AS runtime
 WORKDIR /app
 
 COPY . .
-RUN npm install
+RUN npm install -g pnpm && pnpm install --frozen-lockfile && SKIP_KEYSTATIC=true pnpm build
 
-ENV HOST=0.0.0.0
-ENV PORT=4321
-EXPOSE 4321
-CMD node ./dist/server/entry.mjs
+FROM nginx:alpine
+COPY --from=runtime /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

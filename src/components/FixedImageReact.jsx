@@ -1,17 +1,10 @@
-import React from 'react'
-import gsap from "gsap";
-import { inView } from "motion";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { handleMarquee, marqueeState } from "../globalStore";
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useStore } from '@nanostores/react';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from 'react'
+import { handleMarquee } from "../globalStore";
+import { motion, useScroll, useTransform } from 'motion/react';
 
 
-function FixedImageReact() {
-    const ref = React.useRef(null);
-    const $marqueeState = useStore(marqueeState)
+function FixedImageReact({ heroImage }) {
+    const ref = useRef(null);
 
     const { scrollYProgress } = useScroll({
         ref: ref,
@@ -46,7 +39,7 @@ function FixedImageReact() {
                         objectPosition: 'center top'
                     }}
                     className='rounded-4vh'
-                    src="/new-port-2.jpeg"
+                    src={heroImage ?? "/new-port-2.jpeg"}
                     alt="parallax"
                     id="img1"
                 />

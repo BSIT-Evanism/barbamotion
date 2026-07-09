@@ -1,4 +1,4 @@
-import { useScroll, useTransform, motion } from 'framer-motion'
+import { useScroll, useTransform, motion } from 'motion/react'
 import { useRef } from 'react'
 
 function MidSection() {

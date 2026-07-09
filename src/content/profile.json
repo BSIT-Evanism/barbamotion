@@ -1,0 +1,14 @@
+{
+  "name": "John Evan Solanoy",
+  "title": "Full Stack Developer",
+  "summary": "Results-driven Full Stack Developer with a focus on architecting high-performance web applications and fluid user experiences. Expert in modern JavaScript ecosystems, UI/UX design, and delivering scalable enterprise solutions for hospitality, property management, and digital signage ecosystems.",
+  "location": "Alabang, Muntinlupa City, Metro Manila",
+  "email": "evanismsolanoy@gmail.com",
+  "phone": "+63 992 737 0926",
+  "website": "https://evansolanoy.vercel.app",
+  "linkedin": "https://linkedin.com/in/john-evan-solanoy-72b829262",
+  "github": "https://github.com/BSIT-Evanism",
+  "available": true,
+  "photo": "/images/profile/photo.png",
+  "heroImage": "/images/profile/heroImage.png"
+}

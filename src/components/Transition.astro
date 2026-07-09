@@ -1,116 +1,89 @@
+---
+---
+
 <div
-  class="fixed flex justify-center items-center top-0 bg-black z-10 pointer-events-none w-full h-full"
-  id="transitiondiv"
+  class="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-primary pointer-events-none"
+  id="wiper-overlay"
+  transition:persist
+  aria-hidden="true"
 >
-  <div
-    class="staggertext h-screen w-80px bg-black text-white font-bold text-2xl fixed left-0 top-0 z-20 flex flex-col items-center justify-between py-10"
+  <span
+    class="text-bgColor text-sm md:text-base uppercase tracking-[0.4em] font-medium opacity-60"
+    id="wiper-label"
   >
-    <h1>E</h1>
-    <h1>V</h1>
-  </div>
-  <div
-    class="staggertext h-screen w-80px bg-black text-white font-bold text-2xl fixed right-0 top-0 z-20 flex flex-col items-center justify-between py-10"
-  >
-    <h1>S</h1>
-    <h1>O</h1>
-  </div>
-</div>
-<div
-  class="w-full h-full absolute top-0 flex justify-center items-center pointer-events-none z-10"
->
-  <h1
-    class="pointer-events-none text-white text-4xl font-italic fixed top-45vh underline-dotted underline-white"
-    id="navigateLabel"
-  >
-  </h1>
+  </span>
 </div>
 
 <style>
-  #transitiondiv {
-    transform: scaleX(0);
-    top: 0;
-    left: 0;
-    transform-origin: center;
+  #wiper-overlay {
+    transform: translateY(100%);
   }
 </style>
 
 <script>
-  import barba from "@barba/core";
-  import { animate, timeline, stagger } from "motion";
-  import type { TimelineDefinition } from "motion";
+  import { animate } from "motion";
 
-  const trans = document.getElementById("transitiondiv");
-  const sequence: TimelineDefinition = [
-    [
-      "#transitiondiv",
-      { top: ["100vh", 0] },
-      { duration: 0.5, easing: "ease-in" },
-    ],
+  let wipeIn: ReturnType<typeof animate> | null = null;
 
-    [
-      "#transitiondiv",
-      { scaleX: [1, 0] },
-      { duration: 0.5, delay: 0.3, easing: "ease-in-out" },
-    ],
-  ];
-  const textsequence: TimelineDefinition = [
-    [
-      "#navigateLabel",
-      { y: ["100vh", 0] },
-      { duration: 2, delay: 0.5, easing: [0.71, 0.03, 0.19, 0.91] },
-    ],
-    [
-      "#navigateLabel",
-      { y: [0, "-100vh"] },
-      { duration: 1.5, delay: 0.5, easing: "ease-in-out" },
-    ],
-  ];
-
-  const staggerSequence: TimelineDefinition = [
-    [
-      ".staggertext h1",
-      { opacity: [0, 1], scale: [1, 1.4] },
-      { duration: 1, delay: stagger(0.4), easing: "ease-in-out" },
-    ],
-  ];
-
-  const label = document.querySelector("#navigateLabel");
-
-  function delay(n: number): Promise<void> {
-    n = n || 0;
-    return new Promise((resolve): void => {
-      setTimeout(() => {
-        resolve();
-      }, n);
-    });
+  function getPageName(path: string): string {
+    const segment = path.split("/")[1];
+    if (!segment) return "Home";
+    return segment.charAt(0).toUpperCase() + segment.slice(1);
   }
 
-  barba.init({
-    transitions: [
-      {
-        name: "default",
+  document.addEventListener("astro:before-preparation", (event) => {
+    const e = event as any;
+    const to: URL = e.to ?? new URL("/", window.location.origin);
+    const label = document.querySelector("#wiper-label");
 
-        async leave(data: any) {
-          // @ts-ignore
-          const done = this?.async?.();
+    if (label) {
+      label.textContent = `Going to ${getPageName(to.pathname)}`;
+    }
 
-          //   timeline(sequence, { duration: 2.5 });
-          const transcontrol = timeline(sequence, { duration: 1.5 });
-          if (label) {
-            timeline(staggerSequence, { duration: 1 });
-            label.innerHTML = `<span class="">Navigating to ${
-              data.next.url.path?.split("/")[1]
-                ? data.next.url.path?.split("/")[1]
-                : "Home"
-            }</span>`;
-          }
-          timeline(textsequence, { duration: 1.5 });
-          await delay(500);
-          if (done) {
-            done();
-          }
-        },
-      },
-    ],
+    wipeIn = (animate as any)(
+      "#wiper-overlay",
+      { transform: ["translateY(100%)", "translateY(0%)"] },
+      { duration: 0.25, easing: [0.76, 0, 0.24, 1] }
+    );
+
+    if (label) {
+      (animate as any)(
+        "#wiper-label",
+        { opacity: [0, 0.6], y: [20, 0] },
+        { duration: 0.15, delay: 0.1, easing: "ease-out" }
+      );
+    }
+  });
+
+  document.addEventListener("astro:before-swap", (event) => {
+    const e = event as any;
+    const originalSwap: (() => void) | undefined = e.swap;
+
+    if (originalSwap) {
+      e.swap = async () => {
+        if (wipeIn) {
+          await wipeIn.finished;
+        }
+        originalSwap();
+      };
+    }
+  });
+
+  document.addEventListener("astro:after-swap", () => {
+    const label = document.querySelector("#wiper-label");
+
+    if (label) {
+      (animate as any)(
+        "#wiper-label",
+        { opacity: [0.6, 0], y: [0, -20] },
+        { duration: 0.15, easing: "ease-in" }
+      );
+    }
+
+    (animate as any)(
+      "#wiper-overlay",
+      { transform: ["translateY(0%)", "translateY(-100%)"] },
+      { duration: 0.25, delay: 0.05, easing: [0.76, 0, 0.24, 1] }
+    );
   });
 </script>

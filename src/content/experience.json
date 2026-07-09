@@ -1,0 +1,54 @@
+{
+  "jobs": [
+    {
+      "company": "Bellesoft Systems Inc.",
+      "role": "Frontend Developer",
+      "location": "Alabang, Muntinlupa City",
+      "startDate": "April 2025",
+      "endDate": "Present",
+      "current": true,
+      "highlights": [
+        "Collaborated on large-scale hospitality, property tracking, and sales management systems.",
+        "Implemented a Property Management System (PMS) Accounts Receivable module with dedicated ledger views and dynamic sidebar navigation.",
+        "Optimized features for room reservations, blockings, housekeeping, and point-of-sale (POS) systems.",
+        "Enhanced Sales & Catering interfaces for function room bookings, event management, and lead pipelines.",
+        "Developed real-time standalone and integrated digital signage software synced with the core sales ecosystem."
+      ]
+    },
+    {
+      "company": "Forkbun",
+      "role": "Lead Full Stack Developer",
+      "location": "Legazpi City, Albay",
+      "startDate": "March 2024",
+      "endDate": "March 2025",
+      "current": false,
+      "highlights": [
+        "Spearheaded technical architecture and stack selection for a modern property and resort management platform.",
+        "Designed and bridged first-party consumer-facing and client-side applications for real-time data synchronization."
+      ]
+    },
+    {
+      "company": "Creative Legazpi",
+      "role": "Full Stack Developer (Short-Term Contract)",
+      "location": "Legazpi City, Albay",
+      "startDate": "November 2023",
+      "endDate": "January 2024",
+      "current": false,
+      "highlights": [
+        "Partnered with local designers and stakeholders to build an interactive platform for an LGU to showcase regional artists.",
+        "Delivered a responsive web experience that directly increased online visibility for the creative community."
+      ]
+    },
+    {
+      "company": "Google Developer Student Clubs - Bicol University",
+      "role": "Software Engineering Lead",
+      "location": "Legazpi City, Albay",
+      "startDate": "March 2023",
+      "endDate": "April 2025",
+      "current": false,
+      "highlights": [
+        "Led technical teams, mentored student developers, and structured project architectures for community web platforms."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Forkbun Resort Management",
+  "description": "Modern property and resort management platform. Spearheaded technical architecture and stack selection, designed and bridged first-party consumer-facing and client-side applications for real-time data synchronization.",
+  "image": "/scr-2.webp",
+  "link": "https://alphadev.forkbun.evansolanoy.studio",
+  "tags": ["Full Stack", "Resort Management", "Real-time Sync", "Lead Developer"],
+  "year": "2024",
+  "featured": true,
+  "order": 2
+}

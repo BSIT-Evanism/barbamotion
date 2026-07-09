@@ -1,0 +1,27 @@
+---
+title: Why I Chose Astro for My Portfolio
+excerpt: A deep dive into the decision-making process behind choosing Astro over other frameworks for a content-driven portfolio site.
+publishDate: "2024-10-05"
+tags:
+  - Astro
+  - Web Dev
+---
+When it came time to rebuild my portfolio, I had a choice: stick with the familiar React/Next.js stack, or try something new. I chose Astro, and here's why.
+
+## Content first, JavaScript second
+
+My portfolio is fundamentally a content site — projects, blog posts, an about page. Astro's islands architecture means I ship zero JavaScript by default, only hydrating components that actually need interactivity.
+
+On Next.js, every page shipped a React runtime. On Astro, only my animated hero section and interactive components ship JS. The result: a Lighthouse score that went from 85 to 100.
+
+## The developer experience
+
+Astro's `.astro` syntax is a pleasure to work with. It combines the best parts of JSX (expressions, conditionals) with the simplicity of HTML. No need to worry about `className` vs `class`, or self-closing tags on non-void elements.
+
+## View transitions built in
+
+The `<ClientRouter />` component gives me SPA-style navigation with view transitions, without pulling in a third-party router. The lifecycle events (`astro:before-swap`, `astro:after-swap`) make it easy to orchestrate custom animations.
+
+## The verdict
+
+For content-driven sites — portfolios, blogs, marketing pages — Astro is hard to beat. You get the performance of a static site with the interactivity of a SPA, only where you need it.

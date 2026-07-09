@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { PositionButton } from "../components/Position-Button";
+---
+
+<Layout title="404 - Not Found">
+  <main class="min-h-screen bg-bgColor flex flex-col items-center justify-center p-4">
+    <h1 class="text-8xl md:text-9xl font-bold text-primary mb-4">404</h1>
+    <p class="text-2xl md:text-4xl text-secondary mb-8 text-center">
+      This page seems to have wandered off into the void.
+    </p>
+    <p class="text-lg text-secondary mb-12 text-center max-w-md">
+      The page you're looking for doesn't exist or has been moved. Let's get
+      you back on track.
+    </p>
+    <PositionButton client:only="react" text="Back Home" link="/" />
+  </main>
+</Layout>

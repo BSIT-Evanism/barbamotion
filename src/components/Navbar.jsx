@@ -1,16 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import NavBarSelection from './HeroSection/NavBarSelection';
 
 function Navbar() {
   const ref = useRef(null);
-  const [isInView, setIsInView] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsInView(true)
-    }, 3000)
-  }, [])
-
 
   return (
     <div
@@ -18,7 +10,7 @@ function Navbar() {
       className="flex px-10 py-5 z-10 bg-bgColor text-primary justify-between items-center"
     >
       <img id="logo" src="/favicon.svg" alt="logo" className="w-10vw md:w-3vw" />
-      <NavBarSelection logoState={isInView} />
+      <NavBarSelection />
     </div>
   )
 }

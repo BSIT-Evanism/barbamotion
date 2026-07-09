@@ -1,0 +1,35 @@
+---
+title: Building a Property Management System at Scale
+excerpt: Lessons from implementing an Accounts Receivable module, room reservations, housekeeping, and POS features for a large-scale hospitality platform.
+publishDate: "2025-06-10"
+tags:
+  - Hospitality
+  - Frontend
+  - PMS
+---
+Working on a Property Management System (PMS) at Bellesoft Systems has been one of the most challenging and rewarding experiences of my career. Here's what I've learned building enterprise-grade hospitality software.
+
+## The scope
+
+A modern PMS isn't just a booking system. It encompasses:
+
+- **Room reservations and blockings** — managing availability across room types, dates, and groups.
+- **Housekeeping** — tracking room status, assignments, and turnover times.
+- **Point-of-sale (POS)** — restaurant, bar, and retail transactions tied to guest folios.
+- **Accounts Receivable** — dedicated ledger views for tracking who owes what.
+
+Each of these modules is a full application in its own right. The challenge is making them feel like one coherent product.
+
+## The Accounts Receivable module
+
+I implemented the AR module with dedicated ledger views and dynamic sidebar navigation. The key design decisions:
+
+1. **Ledger-first approach** — every transaction flows into a ledger entry, giving a single source of truth.
+2. **Dynamic sidebar** — the navigation adapts based on the user's role and the current context (e.g., a specific guest folio).
+3. **Real-time updates** — changes in one module (like a POS charge) immediately reflect in the AR ledger.
+
+## Digital signage integration
+
+One of the more unique aspects of this project was building real-time digital signage software that syncs with the core sales ecosystem. Standalone displays show event schedules, room directories, and promotional content — all driven by the same data layer as the PMS.
+
+The architecture required careful separation of concerns: the signage software runs as an independent service but subscribes to the same event stream as the core platform, ensuring real-time sync without tight coupling.

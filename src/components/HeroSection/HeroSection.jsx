@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./HeroSection.module.scss";
-import { motion, useMotionValue, useSpring, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useMotionValue, useSpring, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { getCalApi } from "@calcom/embed-react";
 
 
@@ -36,15 +36,12 @@ function useMousePosition() {
 }
 
 
-function HeroSection() {
+function HeroSection({ showreel }) {
     const ref = useRef(null);
-    const formRef = useRef(null);
     const [hover, setHover] = useState(false);
-    const [tilt, setTilt] = useState(false);
     const { mouseTilt } = useMousePosition();
     const [contact, setContact] = useState(false);
-    const [formstart, setFormstart] = useState('initial');
-    const [name, setName] = useState('');
+    const formstart = 'initial';
 
     const heroTilt = {
         x: useMotionValue(0),
@@ -75,29 +72,13 @@ function HeroSection() {
         }
     }, [mouseTilt.xDeg, mouseTilt.yDeg]);
 
-    function handleFirstPart(e) {
-        e.preventDefault();
-        console.log(formRef.current[0].value);
-        setFormstart('second');
-        setName(formRef.current[0].value);
-    }
-
-    function handleSubmitFinal() {
-        setFormstart('initial');
-        setName('');
-    }
-
 
     return (
         <>
             <motion.div
                 ref={ref}
                 className={styles.wrapper}
-                // initial={{ y: "-100vh" }}
-                // animate={{ y: 0 }}
                 style={{ scale: scrollTransform }}
-                onMouseEnter={() => setTilt(false)}
-                onMouseLeave={() => setTilt(true)}
                 transition={{ duration: 7.5, type: "spring", delay: 0.8 }}
             >
                 <motion.div
@@ -107,7 +88,7 @@ function HeroSection() {
                     onMouseLeave={() => setHover(true)}
                 >
                     <div className={`${styles.inner} hidden md:block`}>
-                        <img src="/showreel.gif" className="object-cover h-full w-full rounded-inherit opacity-30 hover:opacity-100 transition-all duration-300 hidden md:block" alt="showreel" />
+                        <img src={showreel ?? "/showreel.gif"} className="object-cover h-full w-full rounded-inherit opacity-30 hover:opacity-100 transition-all duration-300 hidden md:block" alt="showreel" />
                         <div className={styles.contain}>
                             <div className={`${styles.float} text-slate-500`}>
                                 <h1 className={`${styles.heroText} text-4xl md:text-6xl lg:text-8xl`}>
@@ -148,41 +129,11 @@ function HeroSection() {
                         <h1>Full Stack Developer</h1>
                         <h1>Creative UI/UX Designer</h1>
                     </div>
-                    <img src="/showreel.gif" className="object-cover h-80% w-full rounded-inherit opacity-30 hover:opacity-100 absolute top-0 left-0 transition-all duration-300 md:hidden block" alt="showreel" />
+                    <img src={showreel ?? "/showreel.gif"} className="object-cover h-80% w-full rounded-inherit opacity-30 hover:opacity-100 absolute top-0 left-0 transition-all duration-300 md:hidden block" alt="showreel" />
                 </div>
             </motion.div >
         </>
     );
-}
-
-const Switcher11 = () => {
-    const [isChecked, setIsChecked] = useState(false)
-
-    const handleCheckboxChange = () => {
-        setIsChecked(!isChecked)
-    }
-
-    return (
-        <>
-            <label className='flex cursor-pointer select-none items-center'>
-                <div className='relative'>
-                    <input
-                        type='checkbox'
-                        checked={isChecked}
-                        onChange={handleCheckboxChange}
-                        className='sr-only'
-                    />
-                    <div className='block h-8 w-14 rounded-full bg-[#EAEEFB]'></div>
-                    <div className={`dot absolute ${isChecked && "translate-x-full"} left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition`}>
-                        <span
-                            className={`h-3 w-3 rounded-full transition ${isChecked ? 'bg-white' : 'bg-primary'
-                                }`}
-                        ></span>
-                    </div>
-                </div>
-            </label>
-        </>
-    )
 }
 
 export default HeroSection;
